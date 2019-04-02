@@ -63,7 +63,7 @@ int main(){
     BP.set_motor_power(PORT_B, -10);
     while(true){
       BP.get_sensor(PORT_4, &Gyro4);
-      if(Gyro4.abs == 90){
+      if(Gyro4.abs == 90 || Gyro4.abs == -90){
         break;
       }
     }
