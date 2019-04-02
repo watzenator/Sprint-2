@@ -2,7 +2,8 @@
 #include "movement.hpp"
 #include <stdio.h>      // for printf
 #include <unistd.h>     // for usleep
-#include <signal.h> // for catching exit signals
+#include <signal.h>
+#include <iostream>// for catching exit signals
 
 //BrickPi3 BP;
 
@@ -49,9 +50,10 @@ int main(){
   while(true){
 		BP.set_motor_power(PORT_C, 25);
 		BP.set_motor_power(PORT_B, 25);
-		BP.get_sensor(PORT_4, &Gyro4);
 		while(true){
-			printf("Gyro sensor: degrees per second %4d  \n", Gyro4.abs);
+			BP.get_sensor(PORT_4, &Gyro4);
+			std::cout << Gyro4.abs << std::endl;
+			//printf("Gyro sensor: degrees per second %5d  \n", Gyro4.abs);
 		}
 
 
