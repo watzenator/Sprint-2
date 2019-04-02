@@ -53,6 +53,7 @@ int main(){
 		while(true){
 			if(BP.get_sensor(PORT_4, &Gyro4)) std::cout << "works\n";
 			std::cout << Gyro4.abs << std::endl;
+			usleep(100);
 			//printf("Gyro sensor: degrees per second %5d  \n", Gyro4.abs);
 		}
 
