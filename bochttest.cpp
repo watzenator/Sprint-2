@@ -60,8 +60,8 @@ int main(){
     BP.set_motor_power(PORT_C, normal_speed);
     BP.set_motor_power(PORT_B, normal_speed);
     sleep(2);
-    BP.set_motor_power(PORT_C, 20);
-    BP.set_motor_power(PORT_B, -20);
+    BP.set_motor_power(PORT_C, 100);
+    BP.set_motor_power(PORT_B, -100);
     while(true){
       BP.get_sensor(PORT_4, &Gyro4);
       std::cout << Gyro4.abs%360 << '\n';
@@ -69,7 +69,7 @@ int main(){
         gyro_offset = Gyro4.abs;
         break;
       }
-      usleep(10000);
+      usleep(100);
 
     }
     //sleep(1);
