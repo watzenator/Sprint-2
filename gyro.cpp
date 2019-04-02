@@ -60,11 +60,17 @@ int main(){
 		std::cout << Gyro4.abs << "\n";
 		if(Gyro4.abs < 0){
 			//lspeed += abs(Gyro4.abs);
-			rspeed -= speedoffset;
+			if(rspeed > min_speed){
+				rspeed -= speedoffset;
+
+			}
 			BP.set_motor_power(PORT_C, lspeed);
 		}else if(Gyro4.abs > 0){
 			//rspeed += abs(Gyro4.abs);
-			lspeed -= speedoffset;
+			if(lspeed > min_speed){
+				lspeed -= speedoffset;
+
+			}
 			BP.set_motor_power(PORT_C, lspeed);
 		}else{
 			BP.set_motor_power(PORT_C, normal_speed);
@@ -92,6 +98,6 @@ int main(){
 		// sleep(3);
 		// BP.set_motor_power(PORT_C, 0);
 		// BP.set_motor_power(PORT_B, 0);
-		sleep(1);
+		//sleep(1);
   }
 }
