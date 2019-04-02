@@ -29,10 +29,11 @@ void PIDconfig(pid & Pid){
 
 int PIDcontrol(pid & Pid, int setting, sensor_gyro_t & Gyro4){
 	//making Error
-	int error = setting - Gyro4.abs ;
+	int error = (setting - Gyro4.abs % 360) -10 ;
 	
 	//P part
-	int pOutput = (error * Pid.pGain) + 10;
+	int pOutput = error * Pid.pGain;
+	if (pOutput < 0) return 0;
 	return pOutput;
 }
 
@@ -149,7 +150,7 @@ int main(){
 	pid Pid;
 	PIDconfig(Pid);
 	BP.get_sensor(PORT_4, &Gyro4);
-	sleep(5);
+	sleep(3);
 	while(true){
 		// Read the encoders
 		int32_t EncoderC = BP.get_motor_encoder(PORT_C);
