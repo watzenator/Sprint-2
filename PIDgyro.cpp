@@ -14,7 +14,7 @@ BrickPi3 BP;
 
 struct pid{
 	double pBias = 1500, iBias = 2000, dBias = 2000;
-	double pGain = 0.1, iGain = 0.02, dGain = 0.02;
+	double pGain = 0.5, iGain = 0.02, dGain = 0.02;
 	double iState = 0;
 	double iLimit = 0.25, dLimit = 0.25;
 	double iMax = 100, iMin = -100;
@@ -162,7 +162,7 @@ int main(){
 		int controlValue = PIDcontrol(Pid, 0, Gyro4);
 		BP.set_motor_power(PORT_C, controlValue+20);
 		BP.set_motor_power(PORT_B, -controlValue+20);
-		printf("Gyro abs: %4d", Gyro4.abs);
+		printf("Gyro abs: %4d \n", Gyro4.abs);
 		usleep(1);
 
 	}
