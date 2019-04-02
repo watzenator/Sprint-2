@@ -53,17 +53,20 @@ int main(){
 	int lspeed = normal_speed, rspeed = normal_speed;
 	const int speedoffset = 1;
 	const int min_speed = 10;
+  int gyro_offset = 0;
 
 	while(BP.get_sensor(PORT_4, &Gyro4)){}
   while(true){
     BP.set_motor_power(PORT_C, normal_speed);
     BP.set_motor_power(PORT_B, normal_speed);
     sleep(2);
-    BP.set_motor_power(PORT_C, 10);
-    BP.set_motor_power(PORT_B, -10);
+    BP.set_motor_power(PORT_C, 20);
+    BP.set_motor_power(PORT_B, -);
     while(true){
       BP.get_sensor(PORT_4, &Gyro4);
-      if(Gyro4.abs == 90 || Gyro4.abs == -90){
+      std::cout << Gyro4.abs << '\n';
+      if(Gyro4.abs - gyro_offset >= 90 || Gyro4.abs + gyro_offset <= -90){
+        gyro_offset = Gyro4.abs;
         break;
       }
     }
