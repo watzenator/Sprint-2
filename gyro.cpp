@@ -4,7 +4,7 @@
 #include <unistd.h>     // for usleep
 #include <signal.h>
 #include <iostream>// for catching exit signals
-#include <math>
+
 
 //BrickPi3 BP;
 
