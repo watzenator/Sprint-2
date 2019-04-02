@@ -148,6 +148,8 @@ int main(){
 	sleep(2);
 	pid Pid;
 	PIDconfig(Pid);
+	BP.get_sensor(PORT_4, &Gyro4);
+	sleep(5);
 	while(true){
 		// Read the encoders
 		int32_t EncoderC = BP.get_motor_encoder(PORT_C);
@@ -160,9 +162,9 @@ int main(){
 		int controlValue = PIDcontrol(Pid, 0, Gyro4);
 		BP.set_motor_power(PORT_C, controlValue+20);
 		BP.set_motor_power(PORT_B, -controlValue+20);
+		printf("Gyro abs: %4d", Gyro4.abs);
+		usleep(1);
 
-		printf("Encoder C: %6d  B: %6d Left: %6d Right: %6d \n", EncoderC, EncoderB, Light3.reflected, Light1.reflected);
-		printf("Ultrasonic sensor (S2): CM %5.1f ", Ultrasonic2.cm);
 	}
 }
 
