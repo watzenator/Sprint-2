@@ -59,8 +59,8 @@ int main(){
     BP.set_motor_power(PORT_C, normal_speed);
     BP.set_motor_power(PORT_B, normal_speed);
     sleep(2);
-    BP.set_motor_power(PORT_C, min_speed);
-    BP.set_motor_power(PORT_B, -min_speed);
+    BP.set_motor_power(PORT_C, 10);
+    BP.set_motor_power(PORT_B, -10);
     while(true){
       BP.get_sensor(PORT_4, &Gyro4);
       if(Gyro4.abs == 90){
