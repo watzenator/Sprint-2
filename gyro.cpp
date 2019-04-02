@@ -47,16 +47,16 @@ int main(){
 
   sensor_gyro_t Gyro4;
 
-  while(true){
-		BP.set_motor_power(PORT_C, 0);
-		BP.set_motor_power(PORT_B, 0);
-		while(true){
-			if(BP.get_sensor(PORT_4, &Gyro4)) std::cout << "works\n";
-			std::cout << Gyro4.abs << std::endl;
-			usleep(100);
-			//printf("Gyro sensor: degrees per second %5d  \n", Gyro4.abs);
-		}
+	const int normal_speed = 25;
+	int lspeed = normal_speed, rspeed = normal_speed;
 
+	while((BP.get_sensor(PORT_4, &Gyro4)){}
+  while(true){
+		BP.set_motor_power(PORT_C, normal_speed);
+		BP.set_motor_power(PORT_B, normal_speed);
+
+		BP.get_sensor(PORT_4, &Gyro4);
+		std::cout << Gyro4.abs << "\n";
 
     // printf("Gyro sensor: degrees per second %4d  \n", Gyro4.abs);
 		//
@@ -77,6 +77,6 @@ int main(){
 		// sleep(3);
 		// BP.set_motor_power(PORT_C, 0);
 		// BP.set_motor_power(PORT_B, 0);
-		// sleep(1);
+		sleep(1);
   }
 }
