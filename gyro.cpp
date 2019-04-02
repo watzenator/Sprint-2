@@ -50,7 +50,7 @@ int main(){
 	const int normal_speed = 25;
 	int lspeed = normal_speed, rspeed = normal_speed;
 
-	while((BP.get_sensor(PORT_4, &Gyro4)){}
+	while(BP.get_sensor(PORT_4, &Gyro4)){}
   while(true){
 		BP.set_motor_power(PORT_C, normal_speed);
 		BP.set_motor_power(PORT_B, normal_speed);
