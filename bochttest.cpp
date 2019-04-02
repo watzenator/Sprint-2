@@ -65,9 +65,9 @@ int main(){
     while(true){
       BP.get_sensor(PORT_4, &Gyro4);
       std::cout << Gyro4.abs%360 << '\n';
-      if(Gyro4.abs - gyro_offset >= 75 || Gyro4.abs + gyro_offset <= -75){
-        BP.set_motor_power(PORT_C, 20);
-        BP.set_motor_power(PORT_B, -20);
+      if(Gyro4.abs - gyro_offset >= 50 || Gyro4.abs + gyro_offset <= -50){
+        BP.set_motor_power(PORT_C, 25);
+        BP.set_motor_power(PORT_B, -25);
         if(Gyro4.abs - gyro_offset >= 90 || Gyro4.abs + gyro_offset <= -90){
           gyro_offset = Gyro4.abs;
           break;
