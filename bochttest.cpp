@@ -63,11 +63,11 @@ int main(){
     sleep(2);
     BP.set_motor_power(PORT_C, 100);
     BP.set_motor_power(PORT_B, -100);
-    slow_down_stared = false;
+    slow_down_started = false;
     while(true){
       BP.get_sensor(PORT_4, &Gyro4);
       std::cout << Gyro4.abs%360 << '\n';
-      if(Gyro4.abs - gyro_offset >= 45 || Gyro4.abs + gyro_offset <= -45 || slow_down_stared){
+      if(Gyro4.abs - gyro_offset >= 45 || Gyro4.abs + gyro_offset <= -45 || slow_down_started){
         slow_down_stared = true;
         BP.set_motor_power(PORT_C, 20);
         BP.set_motor_power(PORT_B, -20);
