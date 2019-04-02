@@ -67,6 +67,6 @@ int main(){
         break;
       }
     }
-    sleep(1);
+    //sleep(1);
   }
 }
