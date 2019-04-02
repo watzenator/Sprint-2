@@ -57,12 +57,12 @@ int main(){
 		BP.get_sensor(PORT_4, &Gyro4);
 		std::cout << Gyro4.abs << "\n";
 		if(Gyro4.abs < 0){
-			lspeed -= abs(Gyro4.abs)
-			rspeed += abs(Gyro4.abs)
+			lspeed -= abs(Gyro4.abs);
+			rspeed += abs(Gyro4.abs);
 			BP.set_motor_power(PORT_C, lspeed);
 		}else if(Gryo4.abs > 0){
-			rspeed -= abs(Gyro4.abs)
-			lspeed += abs(Gyro4.abs)
+			rspeed -= abs(Gyro4.abs);
+			lspeed += abs(Gyro4.abs);
 			BP.set_motor_power(PORT_C, lspeed);
 		}else{
 			BP.set_motor_power(PORT_C, normal_speed);
