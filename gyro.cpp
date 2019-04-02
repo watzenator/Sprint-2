@@ -47,26 +47,33 @@ int main(){
   sensor_gyro_t Gyro4;
 
   while(true){
-    BP.get_sensor(PORT_4, &Gyro4);
-    printf("Gyro sensor: degrees per second %4d  \n", Gyro4.abs);
+		BP.set_motor_power(PORT_C, 25);
+		BP.set_motor_power(PORT_B, 25);
+		while(true){
+			BP.get_sensor(PORT_4, &Gyro4);
+			printf("Gyro sensor: degrees per second %4d  \n", Gyro4.abs);
+		}
 
-    BP.set_motor_power(PORT_C, 25);
-    BP.set_motor_power(PORT_B, 25);
-		BP.get_sensor(PORT_4, &Gyro4);
 
-		printf("Gyro sensor: degrees per second %4d  \n", Gyro4.abs);
-		sleep(3);
-		BP.set_motor_power(PORT_C, 0);
-		BP.set_motor_power(PORT_B, 0);
-		sleep(1);
-		BP.set_motor_power(PORT_C, -25);
-		BP.set_motor_power(PORT_B, -25);
-		BP.get_sensor(PORT_4, &Gyro4);
-
-		printf("Gyro sensor: degrees per second %4d  \n", Gyro4.abs);
-		sleep(3);
-		BP.set_motor_power(PORT_C, 0);
-		BP.set_motor_power(PORT_B, 0);
-		sleep(1);
+    // printf("Gyro sensor: degrees per second %4d  \n", Gyro4.abs);
+		//
+    // BP.set_motor_power(PORT_C, 25);
+    // BP.set_motor_power(PORT_B, 25);
+		// BP.get_sensor(PORT_4, &Gyro4);
+		//
+		// printf("Gyro sensor: degrees per second %4d  \n", Gyro4.abs);
+		// sleep(3);
+		// BP.set_motor_power(PORT_C, 0);
+		// BP.set_motor_power(PORT_B, 0);
+		// sleep(1);
+		// BP.set_motor_power(PORT_C, -25);
+		// BP.set_motor_power(PORT_B, -25);
+		// BP.get_sensor(PORT_4, &Gyro4);
+		//
+		// printf("Gyro sensor: degrees per second %4d  \n", Gyro4.abs);
+		// sleep(3);
+		// BP.set_motor_power(PORT_C, 0);
+		// BP.set_motor_power(PORT_B, 0);
+		// sleep(1);
   }
 }
