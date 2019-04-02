@@ -67,6 +67,8 @@ int main(){
 		}else{
 			BP.set_motor_power(PORT_C, normal_speed);
 			BP.set_motor_power(PORT_B, normal_speed);
+			lspeed = normal_speed;
+			rspeed = normal_speed;
 		}
 
     // printf("Gyro sensor: degrees per second %4d  \n", Gyro4.abs);
