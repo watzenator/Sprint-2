@@ -37,7 +37,7 @@ int main(){
   int32_t EncoderC = BP.offset_motor_encoder(PORT_C, BP.get_motor_encoder(PORT_C));
   int32_t EncoderB = BP.offset_motor_encoder(PORT_B, BP.get_motor_encoder(PORT_B));
 
-
+	BP.set_sensor_type(PORT_4, SENSOR_TYPE_EV3_GYRO_ABS_DPS);
 	if(!voltageIsSafe){
 		printf("Battery almost empty, exiting program...");
 		BP.reset_all();
@@ -62,7 +62,7 @@ int main(){
 		BP.set_motor_power(PORT_C, -25);
 		BP.set_motor_power(PORT_B, -25);
 		BP.get_sensor(PORT_4, &Gyro4);
-		
+
 		printf("Gyro sensor: degrees per second %4d  \n", Gyro4.abs);
 		sleep(3);
 		BP.set_motor_power(PORT_C, 0);
