@@ -48,7 +48,7 @@ int main(){
 
   while(true){
     BP.get_sensor(PORT_4, &Gyro4);
-    printf("Gyro sensor: absolute %5d degrees per second %4d  ", Gyro4.abs, Gyro4.dps);
+    printf("Gyro sensor: degrees per second %4d  \n", Gyro4.dps);
 
     BP.set_motor_power(PORT_C, 25);
     BP.set_motor_power(PORT_B, 25);
