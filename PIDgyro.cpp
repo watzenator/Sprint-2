@@ -32,7 +32,7 @@ int PIDcontrol(pid & Pid, int setting, sensor_gyro_t & Gyro4){
 	int error = setting - Gyro4.abs ;
 	
 	//P part
-	int pOutput = (error * Pid.pGain) + 5;
+	int pOutput = (error * Pid.pGain) + 15;
 	return pOutput;
 }
 
