@@ -69,8 +69,8 @@ int main(){
         gyro_offset = Gyro4.abs;
         break;
       }
-      usleep(250000);
-      
+      usleep(10000);
+
     }
     //sleep(1);
   }
