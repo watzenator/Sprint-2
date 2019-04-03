@@ -56,6 +56,27 @@ bool voltageIsSafe(){
 
 void exit_signal_handler(int signo);
 
+void goright(){
+	sensor_gyro_t Gyro4;
+	int gyro_offset = Gyro4.abs;
+	bool slow_down_started;
+    	BP.set_motor_power(PORT_C, 100);
+    	BP.set_motor_power(PORT_B, -100);
+	slow_down_started = false;
+	while(true){
+      		BP.get_sensor(PORT_4, &Gyro4);
+      		std::cout << Gyro4.abs%360 << '\n';
+      		if(Gyro4.abs - gyro_offset >= 40 || slow_down_started){
+        		slow_down_started = true;
+        		BP.set_motor_power(PORT_C, 20);
+        		BP.set_motor_power(PORT_B, -20);
+        		if(Gyro4.abs - gyro_offset >= 90){
+          			break;
+        		}
+      		}
+      		usleep(1);
+	}
+}
 
 void intersection(bool& sensorLeft, bool& sensorRight){
 	BP.set_motor_power(PORT_C, 0);
@@ -187,6 +208,8 @@ void exit_signal_handler(int signo){
 		if(input == "q"){	
 			BP.reset_all();    // Reset everything so there are no run-away motors
 			exit(-2);
+		}else if(input == "d"){
+			goright();
 		}
 	}
 }
