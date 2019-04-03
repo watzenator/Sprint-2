@@ -158,6 +158,7 @@ int main(){
 	PIDconfig(Pid);
 	BP.get_sensor(PORT_4, &Gyro4);
 	sleep(3);
+	jump:
 	while(true){
 		// Read the encoders
 		int32_t EncoderC = BP.get_motor_encoder(PORT_C);
@@ -179,12 +180,16 @@ int main(){
 // Signal handler that will be called when Ctrl+C is pressed to stop the program
 void exit_signal_handler(int signo){
 	if(signo == SIGINT){
+		BP.set_motor_power(PORT_C, 0);
+		BP.set_motor_power(PORT_B, 0);
 		string input;
 		cout << "Give me a choice: ";
 		getline(cin, input);
 		if(input == "q"){	
 			BP.reset_all();    // Reset everything so there are no run-away motors
 			exit(-2);
-			}
+		}else if(input != "q"){
+			goto jump;
 		}
+	}
 }
