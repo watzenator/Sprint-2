@@ -32,10 +32,10 @@ void PIDconfig(pid & Pid){
 
 int PIDcontrol(pid & Pid, int setting, sensor_gyro_t & Gyro4){
 	int error = 0;
-	if(Gyro4.abs > setting && Gyro4.abs < setting + 5){
-		error = 10;
-	}else if(Gyro4.abs < setting && Gyro4.abs > setting - 5){
-		error = -10;
+	if(Gyro4.abs > setting && Gyro4.abs < setting + 10){
+		error = 20;
+	}else if(Gyro4.abs < setting && Gyro4.abs > setting - 10){
+		error = -20;
 	}else{ error = Gyro4.abs - setting;
 	}
 	
