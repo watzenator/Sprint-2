@@ -171,7 +171,8 @@ int main(){
 		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
 		printf("Gyro abs: %4d \n", Gyro4.abs);
 		usleep(1);
-		if(int signo == SIGINT){
+		int signo;
+		if(signo == SIGINT){
 			BP.set_motor_power(PORT_C, 0);
 			BP.set_motor_power(PORT_B, 0);
 			string input;
