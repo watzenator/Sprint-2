@@ -4,6 +4,7 @@
 #include <unistd.h>     // for usleep
 #include <signal.h>     // for catching exit signals
 #include <iostream>
+#include <pthread.h>
 
 #define MAX_MOTORPOWER 100
 #define MIN_MOTORPOWER -100
@@ -55,6 +56,18 @@ bool voltageIsSafe(){
 }
 
 void exit_signal_handler(int signo);
+
+static volatile bool keep_running = true;
+
+static void* userInput_thread(void*){
+	while(keep_running) {
+		if(cin.get() == 'p'){
+			BP.set_motor_power(PORT_C, 0);
+			BP.set_motor_power(PORT_B, 0);
+			keep_running = false;
+		}
+	}
+}
 
 void intersection(bool& sensorLeft, bool& sensorRight){
 	BP.set_motor_power(PORT_C, 0);
@@ -152,12 +165,15 @@ int main(){
 	}
 	
 	sleep(2);
+	pthread_t tId;
+	(void) pthread_create(&tId, 0. userInput_thread, 0);
+	
 	int baseline = 0;
 	pid Pid;
 	PIDconfig(Pid);
 	BP.get_sensor(PORT_4, &Gyro4);
 	sleep(3);
-	while(true){
+	while(keep_running){
 		// Read the encoders
 		int32_t EncoderC = BP.get_motor_encoder(PORT_C);
 		int32_t EncoderB = BP.get_motor_encoder(PORT_B);
@@ -173,6 +189,7 @@ int main(){
 		usleep(1);
 
 	}
+	(void) pthread_join(tId, NULL);
 }
 
 // Signal handler that will be called when Ctrl+C is pressed to stop the program
