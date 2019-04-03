@@ -55,9 +55,6 @@ bool voltageIsSafe(){
 	return true;
 }
 
-void exit_signal_handler(int signo);
-
-
 void intersection(bool& sensorLeft, bool& sensorRight){
 	BP.set_motor_power(PORT_C, 0);
 	BP.set_motor_power(PORT_B, 0);
@@ -173,24 +170,18 @@ int main(){
 		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
 		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
 		printf("Gyro abs: %4d \n", Gyro4.abs);
-		usleep(1);
-	
-	}
-}
-
-// Signal handler that will be called when Ctrl+C is pressed to stop the program
-void exit_signal_handler(int signo){
-	if(signo == SIGINT){
-		BP.set_motor_power(PORT_C, 0);
-		BP.set_motor_power(PORT_B, 0);
-		string input;
-		cout << "Give me a choice: ";
-		getline(cin, input);
-		if(input == "q"){	
-			BP.reset_all();    // Reset everything so there are no run-away motors
-			exit(-2);
-		}else if(input != "q"){
-			goto jump;
+		usleep(1)
+		if(signo == SIGINT){
+			BP.set_motor_power(PORT_C, 0);
+			BP.set_motor_power(PORT_B, 0);
+			string input;
+			cout << "Give me a choice: ";
+			getline(cin, input);
+			if(input == "q"){	
+				BP.reset_all();    // Reset everything so there are no run-away motors
+				exit(-2);
+			}
 		}
 	}
 }
+
