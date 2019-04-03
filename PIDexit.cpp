@@ -58,6 +58,8 @@ void exit_signal_handler(int signo);
 
 void goright(){
 	sensor_gyro_t Gyro4;
+	BP.get_sensor(PORT_4, &Gyro4);
+	usleep(1);
 	int gyro_offset = Gyro4.abs;
 	bool slow_down_started;
     	BP.set_motor_power(PORT_C, 100);
