@@ -7,7 +7,7 @@
 
 #define MAX_MOTORPOWER 100
 #define MIN_MOTORPOWER -100
-#define MOTORSPEED 25
+#define MOTORSPEED 50
 
 int baseline = 0;
 
