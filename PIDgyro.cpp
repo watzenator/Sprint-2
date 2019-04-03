@@ -28,12 +28,15 @@ void PIDconfig(pid & Pid){
 }
 
 int PIDcontrol(pid & Pid, int setting, sensor_gyro_t & Gyro4){
-	//making Error
-	int error = (setting - Gyro4.abs % 360) -10 ;
+	//making Error 
+	if(Gyro4.abs > setting){
+		int error = (setting + Gyro4.abs % 360) + 10;
+	}else if(Gyro4.abs < setting){
+		int error = (setting - Gyro4.abs % 360) + 10;
+	}else{ return 0;}
 	
 	//P part
 	int pOutput = error * Pid.pGain;
-	if (pOutput < 0) return 0;
 	return pOutput;
 }
 
@@ -161,8 +164,8 @@ int main(){
 		BP.get_sensor(PORT_3, &Light3);
 		BP.get_sensor(PORT_4, &Gyro4);
 		int controlValue = PIDcontrol(Pid, 0, Gyro4);
-		BP.set_motor_power(PORT_C, controlValue + MOTORSPEED);
-		BP.set_motor_power(PORT_B, -controlValue + MOTORSPEED);
+		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
+		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
 		printf("Gyro abs: %4d \n", Gyro4.abs);
 		usleep(1);
 
