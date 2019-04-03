@@ -8,7 +8,8 @@
 #define MAX_MOTORPOWER 100
 #define MIN_MOTORPOWER -100
 #define MOTORSPEED 25
-#define baseline 0
+
+int baseline = 0;
 
 using namespace std;
 
