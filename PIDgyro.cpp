@@ -2,7 +2,6 @@
 #include <stdio.h>      // for printf
 #include <unistd.h>     // for usleep
 #include <signal.h>     // for catching exit signals
-#include <ncurses.h>
 #include <iostream>
 
 
@@ -159,7 +158,6 @@ int main(){
 	PIDconfig(Pid);
 	BP.get_sensor(PORT_4, &Gyro4);
 	sleep(3);
-	jump:
 	while(true){
 		// Read the encoders
 		int32_t EncoderC = BP.get_motor_encoder(PORT_C);
@@ -174,14 +172,6 @@ int main(){
 		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
 		printf("Gyro abs: %4d \n", Gyro4.abs);
 		usleep(1);
-		char ch;
-		if(kbhit()){
-			ch = getch();
-			if(ch == 'q'){
-				BP.set_motor_power(PORT_C, 0);
-				BP.set_motor_power(PORT_B, 0);
-			}
-		}
 	}
 }
 
