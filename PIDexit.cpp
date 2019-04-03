@@ -8,6 +8,7 @@
 #define MAX_MOTORPOWER 100
 #define MIN_MOTORPOWER -100
 #define MOTORSPEED 25
+#define baseline 0
 
 using namespace std;
 
@@ -212,6 +213,7 @@ void exit_signal_handler(int signo){
 			exit(-2);
 		}else if(input == "d"){
 			goright();
+			baseline += 90;
 		}
 	}
 }
