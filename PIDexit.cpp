@@ -36,7 +36,7 @@ int PIDcontrol(pid & Pid, int setting, sensor_gyro_t & Gyro4){
 		error = 5;
 	}else if(Gyro4.abs < setting && Gyro4.abs > setting - 5){
 		error = -5;
-	}else{ error = setting  + Gyro4.abs%360;
+	}else{ error = Gyro4.abs - setting;
 	}
 	
 	//P part
