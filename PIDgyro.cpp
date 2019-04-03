@@ -2,7 +2,7 @@
 #include <stdio.h>      // for printf
 #include <unistd.h>     // for usleep
 #include <signal.h>     // for catching exit signals
-#include <conio.h>
+#include <ncurses.h>
 #include <iostream>
 
 
@@ -175,7 +175,7 @@ int main(){
 		printf("Gyro abs: %4d \n", Gyro4.abs);
 		usleep(1);
 		char ch;
-		if(kbHit()){
+		if(kbhit()){
 			ch = getch();
 			if(ch == 'q'){
 				BP.set_motor_power(PORT_C, 0);
