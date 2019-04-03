@@ -3,6 +3,7 @@
 #include <stdio.h>      // for printf
 #include <unistd.h>     // for usleep
 #include <signal.h>     // for catching exit signals
+#include <iostream>
 
 #define MAX_MOTORPOWER 100
 #define MIN_MOTORPOWER -100
@@ -151,6 +152,7 @@ int main(){
 	}
 	
 	sleep(2);
+	int baseline = 0;
 	pid Pid;
 	PIDconfig(Pid);
 	BP.get_sensor(PORT_4, &Gyro4);
@@ -164,7 +166,7 @@ int main(){
 		BP.get_sensor(PORT_2, &Ultrasonic2);
 		BP.get_sensor(PORT_3, &Light3);
 		BP.get_sensor(PORT_4, &Gyro4);
-		int controlValue = PIDcontrol(Pid, 0, Gyro4);
+		int controlValue = PIDcontrol(Pid, baseline, Gyro4);
 		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
 		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
 		printf("Gyro abs: %4d \n", Gyro4.abs);
