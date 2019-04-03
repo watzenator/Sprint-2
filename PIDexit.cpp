@@ -178,7 +178,6 @@ int main(){
 	}
 	
 	sleep(2);	
-	int baseline = 0;
 	pid Pid;
 	PIDconfig(Pid);
 	BP.get_sensor(PORT_4, &Gyro4);
