@@ -159,30 +159,32 @@ int main(){
 	BP.get_sensor(PORT_4, &Gyro4);
 	sleep(3);
 	while(true){
-		while(cin.get() != 'p'){	
-			// Read the encoders
-			int32_t EncoderC = BP.get_motor_encoder(PORT_C);
-			int32_t EncoderB = BP.get_motor_encoder(PORT_B);
+		// Read the encoders
+		int32_t EncoderC = BP.get_motor_encoder(PORT_C);
+		int32_t EncoderB = BP.get_motor_encoder(PORT_B);
 
-			BP.get_sensor(PORT_1, &Light1);
-			BP.get_sensor(PORT_2, &Ultrasonic2);
-			BP.get_sensor(PORT_3, &Light3);
-			BP.get_sensor(PORT_4, &Gyro4);
-			int controlValue = PIDcontrol(Pid, baseline, Gyro4);
-			BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
-			BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
-			printf("Gyro abs: %4d \n", Gyro4.abs);
-			usleep(1);
-		}
-		BP.set_motor_power(PORT_C, 0);
-		BP.set_motor_power(PORT_B, 0);
+		BP.get_sensor(PORT_1, &Light1);
+		BP.get_sensor(PORT_2, &Ultrasonic2);
+		BP.get_sensor(PORT_3, &Light3);
+		BP.get_sensor(PORT_4, &Gyro4);
+		int controlValue = PIDcontrol(Pid, baseline, Gyro4);
+		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
+		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
+		printf("Gyro abs: %4d \n", Gyro4.abs);
+		usleep(1);
 	}
 }
 
 // Signal handler that will be called when Ctrl+C is pressed to stop the program
 void exit_signal_handler(int signo){
 	if(signo == SIGINT){
-		BP.reset_all();    // Reset everything so there are no run-away motors
-		exit(-2);
+		char input;
+		cout << "Give me a choice: ";
+		getline(cin, input);
+		if(input == 'q'){	
+			BP.reset_all();    // Reset everything so there are no run-away motors
+			exit(-2);
+		}else{continue;
+		     }
 	}
 }
