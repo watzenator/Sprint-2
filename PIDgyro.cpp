@@ -112,7 +112,7 @@ void objects(int getal){
 
 
 int main(){
-	signal(SIGINT, exit_signal_handler); // register the exit function for Ctrl+C
+	//signal(SIGINT, exit_signal_handler); // register the exit function for Ctrl+C
  
 	BP.detect(); // Make sure that the BrickPi3 is communicating and that the firmware is compatible with the drivers.
 	
@@ -170,8 +170,8 @@ int main(){
 		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
 		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
 		printf("Gyro abs: %4d \n", Gyro4.abs);
-		usleep(1)
-		if(signo == SIGINT){
+		usleep(1);
+		if(int signo == SIGINT){
 			BP.set_motor_power(PORT_C, 0);
 			BP.set_motor_power(PORT_B, 0);
 			string input;
