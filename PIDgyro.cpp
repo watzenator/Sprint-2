@@ -166,7 +166,7 @@ int main(){
 	
 	sleep(2);
 	pthread_t tId;
-	(void) pthread_create(&tId, 0. userInput_thread, 0);
+	(void) pthread_create(&tId, 0, userInput_thread, 0);
 	
 	int baseline = 0;
 	pid Pid;
