@@ -184,7 +184,7 @@ void exit_signal_handler(int signo){
 		if(input == 'q'){	
 			BP.reset_all();    // Reset everything so there are no run-away motors
 			exit(-2);
-		}else{continue;
-		     }
+		}
+
 	}
 }
