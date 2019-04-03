@@ -178,10 +178,10 @@ int main(){
 // Signal handler that will be called when Ctrl+C is pressed to stop the program
 void exit_signal_handler(int signo){
 	if(signo == SIGINT){
-		char input;
+		string input;
 		cout << "Give me a choice: ";
 		getline(cin, input);
-		if(input == 'q'){	
+		if(input == "q"){	
 			BP.reset_all();    // Reset everything so there are no run-away motors
 			exit(-2);
 		}
