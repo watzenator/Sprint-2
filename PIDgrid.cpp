@@ -201,13 +201,16 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 		baseline += 90;
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
+		sleep(0.5);
 		differenceY *= -1;
 		negativeY = true;
 	}else{
 		goleft();
+		cout << "yes" << endl;
 		baseline -= 90;
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
+		sleep(0.5);
 	}
 	start = time(0);
 	while(differenceY > difftime( time(0), start)){
