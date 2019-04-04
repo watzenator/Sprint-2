@@ -226,11 +226,7 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 	start = time(0);
 	while(differenceY > difftime( time(0), start)){
 		BP.get_sensor(PORT_4, &Gyro4);
-		//cout << "difftime: " << difftime( time(0), start) << "\n
-		
-		
-		
-		: " << baseline << "\n";
+		//cout << "difftime: " << difftime( time(0), start) << "\n: " << baseline << "\n";
 		int controlValue = PIDcontrol(Pid, baseline, Gyro4);
  		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
  		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
