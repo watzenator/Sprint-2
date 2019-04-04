@@ -186,7 +186,7 @@ void grid(location startLoc, location endLoc){
 		goright();
 		differenceY *= -1;
 		negativeY = true;
-	}
+	}else{goleft();}
 	BP.set_motor_power(PORT_C, MOTORSPEED);
 	BP.set_motor_power(PORT_B, MOTORSPEED);
 	sleep(differenceY);
