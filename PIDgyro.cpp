@@ -36,7 +36,7 @@ int PIDcontrol(pid & Pid, int setting, sensor_gyro_t & Gyro4){
 		error = -5;
 	}else{ error = setting + Gyro4.abs % 360;
 	}
-	
+
 	//P part
 	int pOutput = error * Pid.pGain;
 	return pOutput;
@@ -47,7 +47,7 @@ bool voltageIsSafe(){
   	printf("9v voltage      : %.3f\n", BP.get_voltage_9v());
   	printf("5v voltage      : %.3f\n", BP.get_voltage_5v());
   	printf("3.3v voltage    : %.3f\n", BP.get_voltage_3v3());
-	
+
 	if(BP.get_voltage_battery() < 10.9){
 		return false;
 	}
@@ -115,19 +115,19 @@ void objects(int getal){
 
 int main(){
 	signal(SIGINT, exit_signal_handler); // register the exit function for Ctrl+C
- 
+
 	BP.detect(); // Make sure that the BrickPi3 is communicating and that the firmware is compatible with the drivers.
-	
+
 	if(!voltageIsSafe){
 		printf("Battery almost empty, exiting program...");
 		BP.reset_all();
 		exit(-5);
 	}
-	
+
 	// Reset the encoders
 	int32_t EncoderC = BP.offset_motor_encoder(PORT_C, BP.get_motor_encoder(PORT_C));
 	int32_t EncoderB = BP.offset_motor_encoder(PORT_B, BP.get_motor_encoder(PORT_B));
-	
+
 	BP.set_sensor_type(PORT_1, SENSOR_TYPE_NXT_LIGHT_ON);
 	BP.set_sensor_type(PORT_2, SENSOR_TYPE_NXT_ULTRASONIC);
 	BP.set_sensor_type(PORT_3, SENSOR_TYPE_NXT_LIGHT_ON);
@@ -151,8 +151,8 @@ int main(){
 		BP.reset_all();
 		exit(-5);
 	}
-	
-	sleep(2);	
+
+	sleep(2);
 	int baseline = 0;
 	pid Pid;
 	PIDconfig(Pid);
@@ -181,7 +181,7 @@ void exit_signal_handler(int signo){
 		string input;
 		cout << "Give me a choice: ";
 		getline(cin, input);
-		if(input == "q"){	
+		if(input == "q"){
 			BP.reset_all();    // Reset everything so there are no run-away motors
 			exit(-2);
 		}
