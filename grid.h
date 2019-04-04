@@ -5,18 +5,30 @@
 #include "pid.h"
 #include "gyro_mov.h"
 #include <iostream>
+#include <time.h>
 
 struct location{
 	int x = 0;
 	int y = 0;
+
+  location operator+(const location & rhs){
+    this->x += rhs.x;
+    this->y += rhs.y;
+    return *this;
+  }
+
+  location operator-(const location & rhs){
+    this->x -= rhs.x;
+    this->y -= rhs.y;
+    return *this;
+  }
 };
 
 location askLocation(){
 	location goLoc;
 	std::cout << "Geef de x: ";
 	std::cin >> goLoc.x;
-	std::cout << "\n";
-	std::cout << "Geef de y: ";
+	std::cout << "\nGeef de y: ";
 	std::cin >> goLoc.y;
 	std::cout << "\n";
 	return goLoc;
