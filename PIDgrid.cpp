@@ -3,6 +3,7 @@
 #include <unistd.h>     // for usleep
 #include <signal.h>     // for catching exit signals
 #include <iostream>
+#include <time.h>
 using namespace std;
 
 #define MAX_MOTORPOWER 100
@@ -163,25 +164,31 @@ void objects(int getal){
 }
 
 void grid(location startLoc, location endLoc){
-	int differenceX = endLoc.x - startLoc.x;
-	int differenceY = endLoc.y - startLoc.y;
+	double differenceX = endLoc.x - startLoc.x;
+	double differenceY = endLoc.y - startLoc.y;
 	bool negativeX = false;
 	bool negativeY = false;
 	if(differenceX < 0){
 		turnaround();
+		baseline -= 180;
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
 		differenceX *= -1;
 		negativeX = true;
 	}
-	BP.set_motor_power(PORT_C, MOTORSPEED);
-	BP.set_motor_power(PORT_B, MOTORSPEED);
-	sleep(differenceX);
+	time_t start = time(0);
+	while(differenceX > difftime( time(0), start){
+		int controlValue = PIDcontrol(Pid, baseline, Gyro4);
+ 		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
+ 		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
+	}
+
 	BP.set_motor_power(PORT_C, 0);
 	BP.set_motor_power(PORT_B, 0);
 	sleep(0.5);
 	if(negativeX == 1){
 		turnaround();
+		baseline -=180;
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
 		sleep(0.5);
@@ -189,27 +196,35 @@ void grid(location startLoc, location endLoc){
 	
 	if(differenceY < 0){
 		goright();
+		baseline += 90;
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
 		differenceY *= -1;
 		negativeY = true;
 	}else{
 		goleft();
+		baseline -= 90;
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
 	}
-	BP.set_motor_power(PORT_C, MOTORSPEED);
-	BP.set_motor_power(PORT_B, MOTORSPEED);
-	sleep(differenceY);
+	time_t start = time(0);
+	while(differenceY > difftime( time(0), start){
+		int controlValue = PIDcontrol(Pid, baseline, Gyro4);
+ 		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
+ 		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
+	}
+
 	BP.set_motor_power(PORT_C, 0);
 	BP.set_motor_power(PORT_B, 0);
 	sleep(0.5);
 	if(negativeY == 1){
 		goleft();
+		baseline -= 90;
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
 	}else{
 		goright();
+		baseline += 90;
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
 	}
