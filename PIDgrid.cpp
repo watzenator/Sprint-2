@@ -7,7 +7,7 @@ using namespace std;
 
 #define MAX_MOTORPOWER 100
 #define MIN_MOTORPOWER -100
-#define MOTORSPEED 90
+#define MOTORSPEED 50
 
 int baseline = 0;
 void exit_signal_handler(int signo);
