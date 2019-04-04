@@ -53,6 +53,11 @@ int PIDcontrol(pid & Pid, int setting, sensor_gyro_t & Gyro4){
 		error = -20;
 	}else{ error = Gyro4.abs - setting;
 	}
+	if(error > 50){
+		error = 50;
+		cout << "klopt geen kut van die sensor ik ga slapen\n";
+		sleep(5);
+	} 
 	
 	//P part
 	int pOutput = error * Pid.pGain;
