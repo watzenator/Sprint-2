@@ -49,7 +49,7 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
  		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
 		usleep(1);
 	}
-	cout << "first break\n";
+	std::cout << "first break\n";
 	BP.set_motor_power(PORT_C, 0);
 	BP.set_motor_power(PORT_B, 0);
 	sleep(0.5);
@@ -69,7 +69,7 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 		negativeY = true;
 	}else{
 		goleft();
-		std::cout << "yes" << endl;
+		std::cout << "yes" << std::endl;
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
 		sleep(0.5);
