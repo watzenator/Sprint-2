@@ -163,7 +163,7 @@ void objects(int getal){
 		}
 }
 
-void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4;){
+void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 	pid Pid;
 	double differenceX = endLoc.x - startLoc.x;
 	double differenceY = endLoc.y - startLoc.y;
