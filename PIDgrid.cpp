@@ -53,9 +53,10 @@ int PIDcontrol(pid & Pid, int setting, sensor_gyro_t & Gyro4){
 		error = -20;
 	}else{ error = Gyro4.abs - setting;
 	}
-	if(error > 100){
+	if(error > 100 || error < -100){
 		error = 100;
 		cout << "klopt geen kut van die sensor ik ga slapen\n";
+		cout << "Gyro: " << Gyro4.abs << "    setting: " << setting << "\n";
 		sleep(5);
 	} 
 	
@@ -190,7 +191,7 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 	start = time(0);
 	while(differenceX > difftime( time(0), start)){
 		BP.get_sensor(PORT_4, &Gyro4);
-		cout << "difftime: " << difftime( time(0), start) << "\nbaseline: " << baseline <<  "Gyroabs: " << Gyro4.abs << "\n";
+		//cout << "difftime: " << difftime( time(0), start) << "\nbaseline: " << baseline <<  "Gyroabs: " << Gyro4.abs << "\n";
 		int controlValue = PIDcontrol(Pid, baseline, Gyro4);
  		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
  		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
@@ -225,7 +226,11 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 	start = time(0);
 	while(differenceY > difftime( time(0), start)){
 		BP.get_sensor(PORT_4, &Gyro4);
-		cout << "difftime: " << difftime( time(0), start) << "\nbaseline: " << baseline << "\n";
+		//cout << "difftime: " << difftime( time(0), start) << "\n
+		
+		
+		
+		: " << baseline << "\n";
 		int controlValue = PIDcontrol(Pid, baseline, Gyro4);
  		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
  		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
