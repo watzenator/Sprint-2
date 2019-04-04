@@ -21,8 +21,8 @@ int main(){
 	std::cout << "two " << two.x << ", " << two.y << "\n";
 	std::cout << "three " << three.x << ", " << three.y << "\n";
 
-	signal(sigint, exit_signal_handler); // register the exit function for ctrl+c
- 	bp.detect(); // make sure that the brickpi3 is communicating and that the firmware is compatible with the drivers.
+	signal(SIGINT, exit_signal_handler); // register the exit function for ctrl+c
+ 	BP.detect(); // make sure that the brickpi3 is communicating and that the firmware is compatible with the drivers.
 
 	if(!voltageissafe){
 		std::cout << "battery almost empty, exiting program...";
@@ -30,12 +30,12 @@ int main(){
 		exit(-5);
 	}
 
-	bp.set_sensor_type(port_4, sensor_type_ev3_gyro_abs);
+	BP.set_sensor_type(PORT_4, sensor_type_ev3_gyro_abs);
 
 	sensor_gyro_t gyro4;
 
-	int8_t speedleft = motorspeed;
-	int8_t speedright = motorspeed;
+	int8_t speedleft = MOTORSPEED;
+	int8_t speedright = MOTORSPEED;
 
 
 	while(bp.get_sensor(port_4, &gyro4)){}
