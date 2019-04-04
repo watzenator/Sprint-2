@@ -21,9 +21,11 @@ struct location{
 location askLocation(){
 	location goLoc;
 	cout << "Geef de x: ";
-	cin >> goLoc.x << "\n";
+	cin >> goLoc.x;
+	cout << "\n";
 	cout << "Geef de y: ";
-	cin >> goLoc.y << "\n";
+	cin >> goLoc.y;
+	cout << "\n";
 	return goLoc;
 }
 
