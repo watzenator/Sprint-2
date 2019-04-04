@@ -169,6 +169,8 @@ void grid(location startLoc, location endLoc){
 	bool negativeY = false;
 	if(differenceX < 0){
 		turnaround();
+		BP.set_motor_power(PORT_C, 0);
+		BP.set_motor_power(PORT_B, 0);
 		differenceX *= -1;
 		negativeX = true;
 	}
@@ -180,13 +182,21 @@ void grid(location startLoc, location endLoc){
 	sleep(0.5);
 	if(negativeX == 1){
 		turnaround();
+		BP.set_motor_power(PORT_C, 0);
+		BP.set_motor_power(PORT_B, 0);
 	}
 	
 	if(differenceY < 0){
 		goright();
+		BP.set_motor_power(PORT_C, 0);
+		BP.set_motor_power(PORT_B, 0);
 		differenceY *= -1;
 		negativeY = true;
-	}else{goleft();}
+	}else{
+		goleft();
+		BP.set_motor_power(PORT_C, 0);
+		BP.set_motor_power(PORT_B, 0);
+	}
 	BP.set_motor_power(PORT_C, MOTORSPEED);
 	BP.set_motor_power(PORT_B, MOTORSPEED);
 	sleep(differenceY);
@@ -195,7 +205,13 @@ void grid(location startLoc, location endLoc){
 	sleep(0.5);
 	if(negativeY == 1){
 		goleft();
-	}else{goright();}
+		BP.set_motor_power(PORT_C, 0);
+		BP.set_motor_power(PORT_B, 0);
+	}else{
+		goright();
+		BP.set_motor_power(PORT_C, 0);
+		BP.set_motor_power(PORT_B, 0);
+	}
 }
 
 int main(){
