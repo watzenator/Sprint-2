@@ -27,41 +27,6 @@ location askLocation(){
 	return goLoc;
 }
 
-void grid(location startLoc, location endLoc){
-	int differenceX = startLoc.x - endLoc.x;
-	int differenceY = startLoc.y - endLoc.y;
-	bool negativeX = false;
-	bool negativeY = false;
-	if(differenceX < 0){
-		turnaround();
-		differenceX *= -1;
-		negativeX = true;
-	}
-	BP.set_motor_power(PORT_C, MOTORSPEED);
-	BP.set_motor_power(PORT_B, MOTORSPEED);
-	sleep(differenceX);
-	BP.set_motor_power(PORT_C, 0);
-	BP.set_motor_power(PORT_B, 0);
-	sleep(0.5);
-	if(negativeX == 1){
-		turnaround();
-	}
-	
-	if(differenceY < 0){
-		goright();
-		differenceY *= -1;
-		negativeY = true;
-	}
-	BP.set_motor_power(PORT_C, MOTORSPEED);
-	BP.set_motor_power(PORT_B, MOTORSPEED);
-	sleep(differenceY);
-	BP.set_motor_power(PORT_C, 0);
-	BP.set_motor_power(PORT_B, 0);
-	sleep(0.5);
-	if(negativeY == 1){
-		goleft();
-	}
-}
 struct pid{
 	double pBias = 1500, iBias = 2000, dBias = 2000;
 	double pGain = 0.5, iGain = 0.02, dGain = 0.02;
@@ -195,6 +160,41 @@ void objects(int getal){
 		}
 }
 
+void grid(location startLoc, location endLoc){
+	int differenceX = startLoc.x - endLoc.x;
+	int differenceY = startLoc.y - endLoc.y;
+	bool negativeX = false;
+	bool negativeY = false;
+	if(differenceX < 0){
+		turnaround();
+		differenceX *= -1;
+		negativeX = true;
+	}
+	BP.set_motor_power(PORT_C, MOTORSPEED);
+	BP.set_motor_power(PORT_B, MOTORSPEED);
+	sleep(differenceX);
+	BP.set_motor_power(PORT_C, 0);
+	BP.set_motor_power(PORT_B, 0);
+	sleep(0.5);
+	if(negativeX == 1){
+		turnaround();
+	}
+	
+	if(differenceY < 0){
+		goright();
+		differenceY *= -1;
+		negativeY = true;
+	}
+	BP.set_motor_power(PORT_C, MOTORSPEED);
+	BP.set_motor_power(PORT_B, MOTORSPEED);
+	sleep(differenceY);
+	BP.set_motor_power(PORT_C, 0);
+	BP.set_motor_power(PORT_B, 0);
+	sleep(0.5);
+	if(negativeY == 1){
+		goleft();
+	}
+}
 
 int main(){
 	signal(SIGINT, exit_signal_handler); // register the exit function for Ctrl+C
