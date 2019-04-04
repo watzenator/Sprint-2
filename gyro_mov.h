@@ -5,7 +5,6 @@
 #include "base_values.h"
 #include "signalhandler.h"
 #include "pid.h"
-#include "grid.h"
 #include <unistd.h>     // for usleep
 #include <signal.h>     // for catching exit signals
 #include <iostream>
