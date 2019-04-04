@@ -193,6 +193,7 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 		int controlValue = PIDcontrol(Pid, baseline, Gyro4);
  		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
  		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
+		usleep(1);
 	}
 	cout << "first break\n";
 	BP.set_motor_power(PORT_C, 0);
@@ -226,6 +227,7 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 		int controlValue = PIDcontrol(Pid, baseline, Gyro4);
  		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
  		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
+		usleep(1);
 	}
 	cout << "second break\n";
 	BP.set_motor_power(PORT_C, 0);
