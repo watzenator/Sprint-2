@@ -2,7 +2,6 @@
 #define _PID_H
 
 #include <iostream>
-#include "BrickPi3.h"
 #include "base_values.h"
 #include <unistd.h>
 

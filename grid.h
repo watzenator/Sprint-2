@@ -2,7 +2,6 @@
 #define _GRID_H
 
 #include "base_values.h"
-#include "BrickPi3.h"
 #include "pid.h"
 #include "gyro_mov.h"
 #include <iostream>
