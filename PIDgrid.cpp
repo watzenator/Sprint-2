@@ -3,6 +3,7 @@
 #include "signalhandler.h"
 #include "pid.h"
 #include "gyro_mov.h"
+#include "grid.h"
 #include <unistd.h>     // for usleep
 #include <signal.h>     // for catching exit signals
 #include <iostream>
@@ -18,7 +19,7 @@ int main(){
 		BP.reset_all();
 		exit(-5);
 	}
-	
+
 	BP.set_sensor_type(PORT_4, SENSOR_TYPE_EV3_GYRO_ABS);
 
 	sensor_gyro_t Gyro4;

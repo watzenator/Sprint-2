@@ -4,6 +4,7 @@
 #include <iostream>
 #include "BrickPi3.h"
 #include "base_values.h"
+#include <unistd.h>
 
 struct pid{
 	double pBias = 1500, iBias = 2000, dBias = 2000;
@@ -30,8 +31,8 @@ int PIDcontrol(pid & Pid, int setting, sensor_gyro_t & Gyro4){
 	}
 	if(error > 100 || error < -100){
 		error = 100;
-		cout << "klopt geen kut van die sensor ik ga slapen\n";
-		cout << "Gyro: " << Gyro4.abs << "    setting: " << setting << "\n";
+		std::cout << "klopt geen kut van die sensor ik ga slapen\n";
+		std::cout << "Gyro: " << Gyro4.abs << "    setting: " << setting << "\n";
 		sleep(5);
 	}
 
