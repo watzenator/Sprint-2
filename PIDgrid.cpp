@@ -170,6 +170,7 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 	double differenceY = endLoc.y - startLoc.y;
 	bool negativeX = false;
 	bool negativeY = false;
+	cout << "start\n";
 	if(differenceX < 0){
 		turnaround();
 		baseline -= 180;
@@ -178,13 +179,15 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 		differenceX *= -1;
 		negativeX = true;
 	}
+	cout << "first forward\n";
 	start = time(0);
 	while(differenceX > difftime( time(0), start)){
+		cout << "difftime: " << difftime( time(0), start) << "\nbaseline: " << baseline << "\n";
 		int controlValue = PIDcontrol(Pid, baseline, Gyro4);
  		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
  		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
 	}
-
+	cout << "first break\n";
 	BP.set_motor_power(PORT_C, 0);
 	BP.set_motor_power(PORT_B, 0);
 	sleep(0.5);
@@ -212,15 +215,18 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 		BP.set_motor_power(PORT_B, 0);
 		sleep(0.5);
 	}
+	cout << "second forward\n";
 	start = time(0);
 	while(differenceY > difftime( time(0), start)){
+		cout << "difftime: " << difftime( time(0), start) << "\nbaseline: " << baseline << "\n";
 		int controlValue = PIDcontrol(Pid, baseline, Gyro4);
  		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
  		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
 	}
-
+	cout << "second break\n";
 	BP.set_motor_power(PORT_C, 0);
 	BP.set_motor_power(PORT_B, 0);
+	cout << "reset orientation\n";
 	sleep(0.5);
 	if(negativeY == 1){
 		goleft();
