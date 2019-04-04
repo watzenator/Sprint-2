@@ -163,8 +163,8 @@ void objects(int getal){
 }
 
 void grid(location startLoc, location endLoc){
-	int differenceX = startLoc.x - endLoc.x;
-	int differenceY = startLoc.y - endLoc.y;
+	int differenceX = endLoc.x - startLoc.x;
+	int differenceY = endLoc.y - startLoc.y;
 	bool negativeX = false;
 	bool negativeY = false;
 	if(differenceX < 0){
