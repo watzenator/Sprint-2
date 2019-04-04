@@ -4,7 +4,7 @@
 #include <signal.h>     // for catching exit signals
 #include <string>
 #include <iostream>
-#inlcude "gyro_mov.h"
+#include "gyro_mov.h"
 
 // Signal handler that will be called when Ctrl+C is pressed to stop the program
 void exit_signal_handler(int signo){
