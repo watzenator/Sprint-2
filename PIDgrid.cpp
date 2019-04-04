@@ -53,8 +53,8 @@ int PIDcontrol(pid & Pid, int setting, sensor_gyro_t & Gyro4){
 		error = -20;
 	}else{ error = Gyro4.abs - setting;
 	}
-	if(error > 50){
-		error = 50;
+	if(error > 100){
+		error = 100;
 		cout << "klopt geen kut van die sensor ik ga slapen\n";
 		sleep(5);
 	} 
@@ -96,6 +96,7 @@ void goright(){
           			break;
         		}
       		}
+		baseline += 90;
       		usleep(1);
 	}
 }
@@ -120,6 +121,7 @@ void goleft(){
           			break;
         		}
       		}
+		baseline -= 90;
       		usleep(1);
 	}
 }
@@ -144,6 +146,7 @@ void turnaround(){
           			break;
         		}
       		}
+		baseline -= 180;
       		usleep(1);
 	}
 }
@@ -178,7 +181,6 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 	cout << "start\n";
 	if(differenceX < 0){
 		turnaround();
-		baseline -= 180;
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
 		differenceX *= -1;
@@ -198,7 +200,6 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 	sleep(0.5);
 	if(negativeX == 1){
 		turnaround();
-		baseline -=180;
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
 		sleep(0.5);
@@ -206,7 +207,6 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 	
 	if(differenceY < 0){
 		goright();
-		baseline += 90;
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
 		sleep(0.5);
@@ -215,7 +215,6 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 	}else{
 		goleft();
 		cout << "yes" << endl;
-		baseline -= 90;
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
 		sleep(0.5);
@@ -235,12 +234,10 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 	sleep(0.5);
 	if(negativeY == 1){
 		goleft();
-		baseline -= 90;
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
 	}else{
 		goright();
-		baseline += 90;
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
 	}
@@ -317,13 +314,10 @@ void exit_signal_handler(int signo){
 			exit(-2);
 		}else if(input == "d"){
 			goright();
-			baseline += 90;
 		}else if(input == "a"){
 			goleft();
-			baseline -= 90;
 		}else if(input == "s"){
 			turnaround();
-			baseline -= 180;
 		}
 	}
 }
