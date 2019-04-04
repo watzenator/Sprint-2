@@ -129,28 +129,20 @@ void turnaround(){
 void objects(int getal){
 		BP.set_motor_power(PORT_B, ((getal - 5) * 2));
 		BP.set_motor_power(PORT_C, ((getal - 5) * 2));
-		if(getal <= 10){
-			BP.set_motor_power(PORT_C, -MOTORSPEED-10);
-			BP.set_motor_power(PORT_B, MOTORSPEED+10);
-			sleep(1.5);
+		if(getal <= 5){
+			goleft();
 			BP.set_motor_power(PORT_C, MOTORSPEED);
 			BP.set_motor_power(PORT_B, MOTORSPEED);
-			sleep(4);
-			BP.set_motor_power(PORT_C, MOTORSPEED+10);
-			BP.set_motor_power(PORT_B, -MOTORSPEED-10);
-			sleep(1.5);
+			sleep(2);
+			goright();
 			BP.set_motor_power(PORT_C, MOTORSPEED);
 			BP.set_motor_power(PORT_B, MOTORSPEED);
-			sleep(4);
-			BP.set_motor_power(PORT_C, MOTORSPEED+10);
-			BP.set_motor_power(PORT_B, -MOTORSPEED-10);
-			sleep(1.5);
+			sleep(3);
+			goright();
 			BP.set_motor_power(PORT_C, MOTORSPEED);
 			BP.set_motor_power(PORT_B, MOTORSPEED);
-			sleep(4);
-			BP.set_motor_power(PORT_C, -MOTORSPEED-10);
-			BP.set_motor_power(PORT_B, MOTORSPEED+10);
-			sleep(1.5);
+			sleep(2);
+			goleft();
 		}
 }
 
@@ -186,7 +178,7 @@ int main(){
 	pid Pid;
 	PIDconfig(Pid);
 	BP.get_sensor(PORT_4, &Gyro4);
-	sleep(3);
+	sleep(2);
 	while(true){
 		// Read the encoders
 		int32_t EncoderC = BP.get_motor_encoder(PORT_C);
@@ -202,6 +194,9 @@ int main(){
 		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
 		printf("Gyro abs: %4d \n", Gyro4.abs);
 		usleep(1);
+		if(Ultrasonic2.cm <= 20){
+			objects(Ultrasonic2.cm);
+		}
 	}
 }
 
