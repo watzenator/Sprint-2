@@ -5,6 +5,8 @@
 #include <string>
 #include <iostream>
 #include "gyro_mov.h"
+#include "base_values.h"
+
 
 // Signal handler that will be called when Ctrl+C is pressed to stop the program
 void exit_signal_handler(int signo){

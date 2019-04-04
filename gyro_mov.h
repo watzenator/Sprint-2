@@ -1,10 +1,15 @@
 #ifndef _GYRO_MOV_H
 #define _GYRO_MOV_H
 
-#include "BrickPi3.h"
-#include <iostream>
+#include "BrickPi3.h" // for BrickPi3
 #include "base_values.h"
+#include "signalhandler.h"
 #include "pid.h"
+#include "grid.h"
+#include <unistd.h>     // for usleep
+#include <signal.h>     // for catching exit signals
+#include <iostream>
+#include <time.h>
 
 void goright(){
 	sensor_gyro_t Gyro4;
