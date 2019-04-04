@@ -179,7 +179,7 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 		negativeX = true;
 	}
 	start = time(0);
-	while(differenceX > difftime( time(0), start){
+	while(differenceX > difftime( time(0), start)){
 		int controlValue = PIDcontrol(Pid, baseline, Gyro4);
  		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
  		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
@@ -210,7 +210,7 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 		BP.set_motor_power(PORT_B, 0);
 	}
 	start = time(0);
-	while(differenceY > difftime( time(0), start){
+	while(differenceY > difftime( time(0), start)){
 		int controlValue = PIDcontrol(Pid, baseline, Gyro4);
  		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
  		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
