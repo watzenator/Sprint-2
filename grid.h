@@ -10,19 +10,21 @@
 struct location{
 	int x = 0;
 	int y = 0;
+  
+  location operator+(const location & rhs){
+    this->x += rhs.x;
+    this->y += rhs.y;
+    return *this;
+  }
+
+  location operator-(const location & rhs){
+    this->x -= rhs.x;
+    this->y -= rhs.y;
+    return *this;
+  }
 };
 
-location operator+(const location & rhs){
-  this->x += rhs.x;
-  this->y += rhs.y;
-  return *this;
-}
 
-location operator-(const location & rhs){
-  this->x -= rhs.x;
-  this->y -= rhs.y;
-  return *this;
-}
 
 location askLocation(){
 	location goLoc;
