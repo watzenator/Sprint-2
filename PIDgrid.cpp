@@ -195,7 +195,7 @@ void grid(location startLoc, location endLoc){
 	sleep(0.5);
 	if(negativeY == 1){
 		goleft();
-	}
+	}else{goright();}
 }
 
 int main(){
