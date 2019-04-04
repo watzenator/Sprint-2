@@ -222,31 +222,36 @@ int main(){
 
 	int8_t speedLeft = MOTORSPEED;
 	int8_t speedRight = MOTORSPEED;
-	
-	sleep(2);	
+		
 	pid Pid;
 	PIDconfig(Pid);
-	BP.get_sensor(PORT_4, &Gyro4);
-	sleep(2);
+	while(BP.get_sensor(PORT_4, &Gyro4)){}
 	while(true){
-		// Read the encoders
-		int32_t EncoderC = BP.get_motor_encoder(PORT_C);
-		int32_t EncoderB = BP.get_motor_encoder(PORT_B);
-
-		BP.get_sensor(PORT_1, &Light1);
-		BP.get_sensor(PORT_2, &Ultrasonic2);
-		BP.get_sensor(PORT_3, &Light3);
-		BP.get_sensor(PORT_4, &Gyro4);
-		
-		int controlValue = PIDcontrol(Pid, baseline, Gyro4);
-		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
-		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
-		printf("Gyro abs: %4d \n", Gyro4.abs);
-		usleep(1);
-		if(Ultrasonic2.cm <= 20){
-			objects(Ultrasonic2.cm);
-		}
+		cout << "Vul startlocatie in" << "\n";
+		location startLocation = askLocation();
+		cout << "Vul eindlocatie in" << "\n";
+		location endLocation = askLocation();
+		grid(startLocation, endLocation);
 	}
+// 	while(true){
+// 		// Read the encoders
+// 		int32_t EncoderC = BP.get_motor_encoder(PORT_C);
+// 		int32_t EncoderB = BP.get_motor_encoder(PORT_B);
+
+// 		BP.get_sensor(PORT_1, &Light1);
+// 		BP.get_sensor(PORT_2, &Ultrasonic2);
+// 		BP.get_sensor(PORT_3, &Light3);
+// 		BP.get_sensor(PORT_4, &Gyro4);
+		
+// 		int controlValue = PIDcontrol(Pid, baseline, Gyro4);
+// 		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
+// 		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
+// 		printf("Gyro abs: %4d \n", Gyro4.abs);
+// 		usleep(1);
+// 		if(Ultrasonic2.cm <= 20){
+// 			objects(Ultrasonic2.cm);
+// 		}
+// 	}
 }
 
 // Signal handler that will be called when Ctrl+C is pressed to stop the program
