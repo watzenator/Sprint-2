@@ -82,7 +82,7 @@ void goright(){
 	slow_down_started = false;
 	while(true){
       		BP.get_sensor(PORT_4, &Gyro4);
-      		std::cout << Gyro4.abs%360 << "        " << gyro_offset << '\n';
+//       		std::cout << Gyro4.abs%360 << "        " << gyro_offset << '\n';
       		if(Gyro4.abs - gyro_offset >= 40 || slow_down_started){
         		slow_down_started = true;
         		BP.set_motor_power(PORT_C, 35);
@@ -106,7 +106,7 @@ void goleft(){
 	slow_down_started = false;
 	while(true){
       		BP.get_sensor(PORT_4, &Gyro4);
-      		std::cout << Gyro4.abs%360 << "        " << gyro_offset << '\n';
+//       		std::cout << Gyro4.abs%360 << "        " << gyro_offset << '\n';
       		if(Gyro4.abs - gyro_offset <= -40 || slow_down_started){
         		slow_down_started = true;
         		BP.set_motor_power(PORT_C, -35);
