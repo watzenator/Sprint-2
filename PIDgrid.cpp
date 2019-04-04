@@ -184,6 +184,7 @@ void grid(location startLoc, location endLoc){
 		turnaround();
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
+		sleep(0.5);
 	}
 	
 	if(differenceY < 0){
