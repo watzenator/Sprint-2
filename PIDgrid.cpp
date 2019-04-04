@@ -163,7 +163,8 @@ void objects(int getal){
 		}
 }
 
-void grid(location startLoc, location endLoc){
+void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4;){
+	pid Pid;
 	double differenceX = endLoc.x - startLoc.x;
 	double differenceY = endLoc.y - startLoc.y;
 	bool negativeX = false;
@@ -265,7 +266,7 @@ int main(){
 		location startLocation = askLocation();
 		cout << "Vul eindlocatie in" << "\n";
 		location endLocation = askLocation();
-		grid(startLocation, endLocation);
+		grid(startLocation, endLocation, Gyro4);
 	}
 // 	while(true){
 // 		// Read the encoders
