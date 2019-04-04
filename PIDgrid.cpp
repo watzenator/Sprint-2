@@ -96,9 +96,9 @@ void goright(){
           			break;
         		}
       		}
-		baseline += 90;
       		usleep(1);
 	}
+	baseline += 90;	
 }
 
 void goleft(){
@@ -121,9 +121,9 @@ void goleft(){
           			break;
         		}
       		}
-		baseline -= 90;
       		usleep(1);
 	}
+	baseline -= 90;
 }
 
 void turnaround(){
@@ -146,9 +146,9 @@ void turnaround(){
           			break;
         		}
       		}
-		baseline -= 180;
       		usleep(1);
 	}
+	baseline -= 180;
 }
 
 void objects(int getal){
