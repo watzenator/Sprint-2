@@ -1,6 +1,8 @@
 #ifndef _GRID_H
 #define _GRID_H
 
+#include "BrickPi3.cpp"
+
 #include "base_values.h"
 #include "pid.h"
 #include "gyro_mov.h"
@@ -10,7 +12,7 @@
 struct location{
 	int x = 0;
 	int y = 0;
-  
+
   location operator+(const location & rhs){
     this->x += rhs.x;
     this->y += rhs.y;
