@@ -5,7 +5,7 @@
 #include "base_values.h"
 #include <unistd.h>
 
-int calc_degrees(const int & abs){
+int calc_degrees(int abs){
 	abs %= 360;
 	if(abs < -180){
 		abs += 360;
