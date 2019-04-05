@@ -293,17 +293,17 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 
 
 int main(){
-	location one;
-	location two;
-	one.x = 1;
-	two.x = 5;
-	one.y = 2;
-	two.y = 6;
-
-	location three = one + two;
-	std::cout << "one " << one.x << ", " << one.y << "\n";
-	std::cout << "two " << two.x << ", " << two.y << "\n";
-	std::cout << "three " << three.x << ", " << three.y << "\n";
+	// location one;
+	// location two;
+	// one.x = 1;
+	// two.x = 5;
+	// one.y = 2;
+	// two.y = 6;
+	//
+	// location three = one + two;
+	// std::cout << "one " << one.x << ", " << one.y << "\n";
+	// std::cout << "two " << two.x << ", " << two.y << "\n";
+	// std::cout << "three " << three.x << ", " << three.y << "\n";
 
 	signal(SIGINT, exit_signal_handler); // register the exit function for ctrl+c
  	BP.detect(); // make sure that the brickpi3 is communicating and that the firmware is compatible with the drivers.
