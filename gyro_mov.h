@@ -1,7 +1,7 @@
 #ifndef _GYRO_MOV_H
 #define _GYRO_MOV_H
 
-#include "BrickPi3.cpp"
+// #include "BrickPi3.cpp"
 
 #include "base_values.h"
 #include "signalhandler.h"

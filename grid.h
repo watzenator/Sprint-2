@@ -1,7 +1,7 @@
 #ifndef _GRID_H
 #define _GRID_H
 
-#include "BrickPi3.cpp"
+// #include "BrickPi3.cpp"
 
 #include "base_values.h"
 #include "pid.h"
