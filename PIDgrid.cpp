@@ -8,6 +8,9 @@
 #include <iostream>
 #include <time.h>
 
+BrickPi3 BP;
+
+
 int main(){
 	location one;
 	location two;
@@ -57,5 +60,5 @@ int main(){
 		grid(startlocation, endlocation, gyro4);
 		startlocation = endlocation;
 	}
-		
+
 }
