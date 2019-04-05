@@ -35,7 +35,7 @@ void PIDconfig(pid & Pid){
 
 int PIDcontrol(pid & Pid, int setting, sensor_gyro_t & Gyro4){
 	int error = 0;
-	BP.get_sensor(PORT_4,Gyro4);
+	BP.get_sensor(PORT_4,&Gyro4);
 	int degrees = calc_degrees(Gyro4.abs);
 	setting = calc_degrees(setting);
 	std::cout << "degrees :";
