@@ -39,11 +39,23 @@ int main(){
 
 
 	while(BP.get_sensor(PORT_4, &gyro4)){}
-	while(true){
+	bool firstrun = true;
+	location startlocation;
+	location endlocation;
+	while(firstrun){
 		std::cout << "vul startlocatie in\n";
-		location startlocation = askLocation();
+		startlocation = askLocation();
 		std::cout << "vul eindlocatie in\n";
-		location endlocation = askLocation();
+		endlocation = askLocation();
 		grid(startlocation, endlocation, gyro4);
+		startlocation = endlocation;
+		firstrun = false;
 	}
+	while(not firstrun){
+		std::cout << "vul eindlocatie in\n";
+		endlocation = askLocation();
+		grid(startlocation, endlocation, gyro4);
+		startlocation = endlocation;
+	}
+		
 }
