@@ -1,7 +1,7 @@
 #ifndef _BASE_VALUES_H
 #define _BASE_VALUES_H
 
-#include "BrickPi3.cpp"
+#include "BrickPi3.h"
 
 #define MAX_MOTORPOWER 100
 #define MIN_MOTORPOWER -100
