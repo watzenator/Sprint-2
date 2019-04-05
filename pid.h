@@ -38,6 +38,8 @@ int PIDcontrol(pid & Pid, int setting, sensor_gyro_t & Gyro4){
 	BP.get_sensor(PORT_4,&Gyro4);
 	int degrees = calc_degrees(Gyro4.abs);
 	setting = calc_degrees(setting);
+	std::cout << "Gyro: " << degrees << "    setting: " << setting << "\n";
+
 	//std::cout << "degrees :";
 	if(degrees > setting && degrees < (setting) + 10){
 		error = 20;

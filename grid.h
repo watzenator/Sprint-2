@@ -67,19 +67,19 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 	std::cout << "first break\n";
 	BP.set_motor_power(PORT_C, 0);
 	BP.set_motor_power(PORT_B, 0);
-	sleep(0.5);
+	sleep(1);
 	if(negativeX == 1){
 		turnaround();
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
-		sleep(0.5);
+		sleep(1);
 	}
 
 	if(differenceY < 0){
 		goright();
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
-		sleep(0.5);
+		sleep(1);
 		differenceY *= -1;
 		negativeY = true;
 	}else{
@@ -87,7 +87,7 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 		std::cout << "yes" << std::endl;
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
-		sleep(0.5);
+		sleep(1);
 	}
 	std::cout << "second forward\n";
 	start = time(0);
@@ -103,7 +103,7 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 	BP.set_motor_power(PORT_C, 0);
 	BP.set_motor_power(PORT_B, 0);
 	std::cout << "reset orientation\n";
-	sleep(0.5);
+	sleep(3);
 	if(negativeY == 1){
 		goleft();
 		BP.set_motor_power(PORT_C, 0);
@@ -113,5 +113,6 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
 	}
+	sleep(1);
 }
 #endif
