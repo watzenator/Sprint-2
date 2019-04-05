@@ -8,7 +8,7 @@
 #include <iostream>
 #include <time.h>
 
-BrickPi3 BP;
+// BrickPi3 BP;
 
 
 int main(){
