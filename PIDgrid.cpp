@@ -32,7 +32,7 @@ int main(){
 	signal(SIGINT, exit_signal_handler); // register the exit function for ctrl+c
  	BP.detect(); // make sure that the brickpi3 is communicating and that the firmware is compatible with the drivers.
 
-	if(!voltageIsSafe){
+	if(!voltageIsSafe()){
 		std::cout << "battery almost empty, exiting program...";
 		BP.reset_all();
 		exit(-5);
