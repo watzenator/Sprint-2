@@ -215,6 +215,8 @@ int main(){
 		time_t start;
 		start = time(0);
 		while(1 > difftime( time(0), start)){
+			int32_t EncoderC = BP.get_motor_encoder(PORT_C);
+			int32_t EncoderB = BP.get_motor_encoder(PORT_B);
 			int controlValue = PIDcontrol(Pid, baseline, Gyro4);
 			BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
 			BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
@@ -225,6 +227,7 @@ int main(){
 		BP.set_motor_power(PORT_B, 0);
 		sleep(2);
 		usleep(1);
+		printf("tussenstop\n");
 	}
 }
 
