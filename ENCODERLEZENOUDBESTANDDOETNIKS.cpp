@@ -227,7 +227,7 @@ int main(){
 		BP.set_motor_power(PORT_B, 0);
 		sleep(2);
 		usleep(1);
-		printf("tussenstop");
+		printf("tussenstop\n");
 	}
 }
 
