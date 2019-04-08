@@ -191,6 +191,7 @@ int main(){
 		BP.get_sensor(PORT_2, &Ultrasonic2);
 		BP.get_sensor(PORT_3, &Light3);
 		BP.get_sensor(PORT_4, &Gyro4);
+		time_t start;
 		start = time(0);
 		while(1 > difftime( time(0), start)){
 			int controlValue = PIDcontrol(Pid, baseline, Gyro4);
