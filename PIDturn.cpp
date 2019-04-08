@@ -7,7 +7,7 @@ using namespace std;
 
 #define MAX_MOTORPOWER 100
 #define MIN_MOTORPOWER -100
-#define MOTORSPEED 90
+#define MOTORSPEED 40
 
 int baseline = 0;
 void exit_signal_handler(int signo);
@@ -194,7 +194,7 @@ int main(){
 		int controlValue = PIDcontrol(Pid, baseline, Gyro4);
 		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
 		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
-		printf("Gyro abs: %4d \n", Gyro4.abs);
+		printf("Gyro abs: %4d Baseline: %4d \n", Gyro4.abs, baseline);
 		usleep(1);
 		if(Ultrasonic2.cm <= 20){
 			objects(Ultrasonic2.cm);
