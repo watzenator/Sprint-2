@@ -36,7 +36,7 @@ void goright(){
 	baseline += 90;
 }
 
-void goleft(){
+void turn(){
 // 	sensor_gyro_t Gyro4;
 // 	BP.get_sensor(PORT_4, &Gyro4);
 // 	usleep(1);
@@ -59,6 +59,14 @@ void goleft(){
 //       		usleep(1);
 // 	}
 	baseline -= 90;
+	int controlValue;
+	while(PIDcontrol(Gyro4) != 0){
+		//cout << "difftime: " << difftime( time(0), start) << "\n: " << baseline << "\n";
+		controlValue = PIDcontrol(Gyro4);
+		BP.set_motor_power(PORT_C, -controlValue - MOTORSPEED);
+		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
+		usleep(1);
+	}
 }
 
 void turnaround(){
