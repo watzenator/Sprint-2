@@ -221,7 +221,7 @@ int main(){
 			BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
 			BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
 			usleep(1);
-			printf(afstand);
+			cout << "afstand is: " << afstand << "\n";
 			printf("start EncoderC: %4d,  EncoderB: %5d \n", EncoderC, EncoderB);
 		}
 		EncoderC = BP.get_motor_encoder(PORT_C);
