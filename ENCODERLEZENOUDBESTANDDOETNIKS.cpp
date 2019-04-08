@@ -203,7 +203,7 @@ int main(){
 	PIDconfig(Pid);
 	BP.get_sensor(PORT_4, &Gyro4);
 	sleep(2);
-	int afstand = 1000;
+	int afstand = 750;
 	while(true){
 		// Read the encoders
 		int32_t EncoderC = BP.get_motor_encoder(PORT_C);
