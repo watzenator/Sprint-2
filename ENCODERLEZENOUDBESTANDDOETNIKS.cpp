@@ -24,6 +24,16 @@ struct pid{
 	double lastError = 0;
 };
 
+int calc_degrees(int abs){
+	abs %= 360;
+	if(abs < -180){
+		abs += 360;
+	}else if(abs > 180){
+		abs -= 360;
+	}
+	return abs;
+}
+
 void PIDconfig(pid & Pid){
 	Pid.iMax = Pid.iLimit * MAX_MOTORPOWER / Pid.iGain;
 	Pid.iMin = Pid.iLimit * MIN_MOTORPOWER / Pid.iGain;
@@ -42,7 +52,7 @@ int PIDcontrol(pid & Pid, int setting, sensor_gyro_t & Gyro4){
 		error = -20;
 	}else{ error = degrees - setting;
 	}
-	if((error > 100 || error < -100){
+	if((error > 100 || error < -100)){
 		error = 100;
 		std::cout << "klopt geen kut van die sensor ik ga slapen\n";
 		//std::cout << "Gyro: " << Gyro4.abs << "    setting: " << setting << "\n";
