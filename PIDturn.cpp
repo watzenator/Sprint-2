@@ -15,7 +15,7 @@ BrickPi3 BP;
 
 struct pid{
 	double pBias = 1500, iBias = 2000, dBias = 2000;
-	double pGain = 1.0, iGain = 0.02, dGain = 0.02;
+	double pGain = 0.7, iGain = 0.02, dGain = 0.02;
 	double iState = 0;
 	double iLimit = 0.25, dLimit = 0.25;
 	double iMax = 100, iMin = -100;
