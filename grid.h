@@ -74,7 +74,7 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 	}
 
 	if(differenceY < 0){
-		goright();
+		goright(Gyro4);
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
 		sleep(1);
@@ -107,7 +107,7 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
 	}else{
-		goright();
+		goright(Gyro4);
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
 	}
