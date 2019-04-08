@@ -222,14 +222,14 @@ int main(){
 			BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
 			usleep(1);
 		}
-		int32_t EncoderC = BP.get_motor_encoder(PORT_C);
-		int32_t EncoderB = BP.get_motor_encoder(PORT_B);
+		EncoderC = BP.get_motor_encoder(PORT_C);
+		EncoderB = BP.get_motor_encoder(PORT_B);
 		printf("eind EncoderC: %4d,  EncoderB: %5d \n", EncoderC, EncoderB);
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
 		sleep(2);
-		int32_t EncoderC = BP.get_motor_encoder(PORT_C);
-		int32_t EncoderB = BP.get_motor_encoder(PORT_B);
+		EncoderC = BP.get_motor_encoder(PORT_C);
+		EncoderB = BP.get_motor_encoder(PORT_B);
 		printf("start EncoderC: %4d,  EncoderB: %5d \n", EncoderC, EncoderB);
 		usleep(1);
 		printf("tussenstop\n");
