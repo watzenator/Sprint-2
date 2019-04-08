@@ -28,16 +28,27 @@ void PIDconfig(pid & Pid){
 	Pid.iMax = Pid.iLimit * MAX_MOTORPOWER / Pid.iGain;
 	Pid.iMin = Pid.iLimit * MIN_MOTORPOWER / Pid.iGain;
 }
-
 int PIDcontrol(pid & Pid, int setting, sensor_gyro_t & Gyro4){
 	int error = 0;
-	if(Gyro4.abs > setting && Gyro4.abs < setting + 10){
+	BP.get_sensor(PORT_4,&Gyro4);
+	int degrees = calc_degrees(Gyro4.abs);
+	setting = calc_degrees(setting);
+	//std::cout << "Gyro: " << degrees << "    setting: " << setting << "\n";
+
+	//std::cout << "degrees :";
+	if(degrees > setting && degrees < (setting) + 10){
 		error = 20;
-	}else if(Gyro4.abs < setting && Gyro4.abs > setting - 10){
+	}else if(degrees < setting && degrees > (setting) - 10){
 		error = -20;
-	}else{ error = Gyro4.abs - setting;
+	}else{ error = degrees - setting;
 	}
-	
+	if((error > 100 || error < -100){
+		error = 100;
+		std::cout << "klopt geen kut van die sensor ik ga slapen\n";
+		//std::cout << "Gyro: " << Gyro4.abs << "    setting: " << setting << "\n";
+		sleep(5);
+	}
+
 	//P part
 	int pOutput = error * Pid.pGain;
 	return pOutput;
@@ -200,6 +211,8 @@ int main(){
 			printf("EncoderC: %4d,  EncoderB: %5d \n", EncoderC, EncoderB);
 			usleep(1);
 		}
+		BP.set_motor_power(PORT_C, 0);
+		BP.set_motor_power(PORT_B, 0);
 		sleep(2);
 		usleep(1);
 	}
