@@ -17,11 +17,11 @@ void turn(sensor_gyro_t & Gyro4){
 		control = PIDcontrol(Gyro4);
 		if(control == 0) return;
 		else if(control < 0){
-			BP.set_motor_power(PORT_C, +controlValue + MOTORSPEED);
-			BP.set_motor_power(PORT_B, -controlValue - MOTORSPEED);
+			BP.set_motor_power(PORT_C, +control + MOTORSPEED);
+			BP.set_motor_power(PORT_B, -control - MOTORSPEED);
 		}else if(control > 0){
-			BP.set_motor_power(PORT_C, -controlValue - MOTORSPEED);
-			BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
+			BP.set_motor_power(PORT_C, -control - MOTORSPEED);
+			BP.set_motor_power(PORT_B, +control + MOTORSPEED);
 		}
 		usleep(1);
 	}
@@ -83,7 +83,7 @@ void goleft(sensor_gyro_t & Gyro4){
 //       		usleep(1);
 // 	}
 	baseline -= 90;
-	// int controlValue;
+
 	// while(PIDcontrol(Gyro4) != 0){
 	// 	//cout << "difftime: " << difftime( time(0), start) << "\n: " << baseline << "\n";
 	// 	controlValue = PIDcontrol(Gyro4);
