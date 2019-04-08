@@ -220,12 +220,17 @@ int main(){
 			int controlValue = PIDcontrol(Pid, baseline, Gyro4);
 			BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
 			BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
-			printf("EncoderC: %4d,  EncoderB: %5d \n", EncoderC, EncoderB);
 			usleep(1);
 		}
+		EncoderC = BP.get_motor_encoder(PORT_C);
+		EncoderB = BP.get_motor_encoder(PORT_B);
+		printf("eind EncoderC: %4d,  EncoderB: %5d \n", EncoderC, EncoderB);
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
 		sleep(2);
+		EncoderC = BP.get_motor_encoder(PORT_C);
+		EncoderB = BP.get_motor_encoder(PORT_B);
+		printf("start EncoderC: %4d,  EncoderB: %5d \n", EncoderC, EncoderB);
 		usleep(1);
 		printf("tussenstop\n");
 	}
