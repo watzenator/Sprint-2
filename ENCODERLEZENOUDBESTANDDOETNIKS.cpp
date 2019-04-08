@@ -203,18 +203,18 @@ int main(){
 	PIDconfig(Pid);
 	BP.get_sensor(PORT_4, &Gyro4);
 	sleep(2);
+	int afstand = 250;
 	while(true){
 		// Read the encoders
 		int32_t EncoderC = BP.get_motor_encoder(PORT_C);
 		int32_t EncoderB = BP.get_motor_encoder(PORT_B);
-
 		BP.get_sensor(PORT_1, &Light1);
 		BP.get_sensor(PORT_2, &Ultrasonic2);
 		BP.get_sensor(PORT_3, &Light3);
 		BP.get_sensor(PORT_4, &Gyro4);
 		time_t start;
 		start = time(0);
-		while(1 > difftime( time(0), start)){
+		while(EncoderC < afstand && EncoderB < afstand){
 			int32_t EncoderC = BP.get_motor_encoder(PORT_C);
 			int32_t EncoderB = BP.get_motor_encoder(PORT_B);
 			int controlValue = PIDcontrol(Pid, baseline, Gyro4);
@@ -232,6 +232,7 @@ int main(){
 		EncoderB = BP.get_motor_encoder(PORT_B);
 		printf("start EncoderC: %4d,  EncoderB: %5d \n", EncoderC, EncoderB);
 		usleep(1);
+		afstand += 250;
 		printf("tussenstop\n");
 	}
 }
