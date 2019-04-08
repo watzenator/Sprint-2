@@ -217,7 +217,6 @@ void exit_signal_handler(int signo){
 			goright();
 		}else if(input == "a"){
 			goleft();
-			baseline -= 90;
 		}else if(input == "s"){
 			turnaround();
 		}
