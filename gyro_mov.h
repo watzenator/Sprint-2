@@ -18,8 +18,8 @@ void turn(sensor_gyro_t & Gyro4){
 		std::cout << control << "\n";
 		if(control == 0) return;
 		else if(control < 0){
-			BP.set_motor_power(PORT_C, +control + MOTORSPEED);
-			BP.set_motor_power(PORT_B, -control - MOTORSPEED);
+			BP.set_motor_power(PORT_C, -control - MOTORSPEED);
+			BP.set_motor_power(PORT_B, +control + MOTORSPEED);
 		}else if(control > 0){
 			BP.set_motor_power(PORT_C, -control - MOTORSPEED);
 			BP.set_motor_power(PORT_B, +control + MOTORSPEED);
