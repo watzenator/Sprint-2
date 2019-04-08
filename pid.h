@@ -35,9 +35,17 @@ void PIDconfig(pid & Pid){
 
 int PIDcontrol(sensor_gyro_t & Gyro4){
 	BP.get_sensor(PORT_4,&Gyro4);
-	int gyroabs = Gyro4.abs/* % 360*/;
-	int orientation = calc_degrees(gyroabs - baseline);
-	return orientation * 0.5;
+	int turnspeed = calc_degrees(Gyro4.abs - baseline) * 0.5;
+	if(turnspeed > -15 && turnspeed < 0){
+		return -15;
+	}else if(turnspeed < 15 && turnspeed > 0){
+		return 15;
+	}else{
+		return turnspeed;
+	}
+	//return calc_degrees(Gyro4.abs - baseline) * 0.5;
+
+
 	// int error = 0;
 	// BP.get_sensor(PORT_4,&Gyro4);
 	// int degrees = calc_degrees(Gyro4.abs);
