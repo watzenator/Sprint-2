@@ -33,7 +33,7 @@ void PIDconfig(pid & Pid){
 	Pid.iMin = Pid.iLimit * MIN_MOTORPOWER / Pid.iGain;
 }
 
-int PIDcontrol(pid & Pid, int setting, sensor_gyro_t & Gyro4){
+int PIDcontrol(sensor_gyro_t & Gyro4){
 	BP.get_sensor(PORT_4,&Gyro4);
 	int gyroabs = Gyro4.abs/* % 360*/;
 	int orientation = calc_degrees(gyroabs - baseline);
