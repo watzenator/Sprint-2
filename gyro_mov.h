@@ -19,12 +19,12 @@ void turn(sensor_gyro_t & Gyro4){
 		if(control == 0) return;
 		else if(control < 0){
 			//left
-			BP.set_motor_power(PORT_C, +control + MOTORSPEED);
-			BP.set_motor_power(PORT_B, -control - MOTORSPEED);
+			BP.set_motor_power(PORT_C, control - MOTORSPEED);
+			BP.set_motor_power(PORT_B, -control + MOTORSPEED);
 		}else if(control > 0){
 			//right
-			BP.set_motor_power(PORT_C, -control - MOTORSPEED);
-			BP.set_motor_power(PORT_B, +control + MOTORSPEED);
+			BP.set_motor_power(PORT_C, control + MOTORSPEED);
+			BP.set_motor_power(PORT_B, -control - MOTORSPEED);
 		}
 		usleep(1);
 	}
