@@ -36,7 +36,7 @@ void goright(){
 	baseline += 90;
 }
 
-void turn(){
+void goleft(){
 // 	sensor_gyro_t Gyro4;
 // 	BP.get_sensor(PORT_4, &Gyro4);
 // 	usleep(1);
