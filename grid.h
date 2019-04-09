@@ -80,11 +80,10 @@ void object(){
 		}
 		
 		//gaat naar rechts
-		sensor_gyro_t Gyro4;
 		BP.get_sensor(PORT_4, &Gyro4);
 		usleep(1);
-		int gyro_offset = Gyro4.abs;
-		bool slow_down_started;
+		gyro_offset = Gyro4.abs;
+		slow_down_started;
 			BP.set_motor_power(PORT_C, 100);
 			BP.set_motor_power(PORT_B, -100);
 		slow_down_started = false;
@@ -101,7 +100,7 @@ void object(){
 				}
 				usleep(1);
 		}
-		BP.get_sensor(PORT_3 &Ultrasonic3);
+		BP.get_sensor(PORT_3, &Ultrasonic3);
 	}
 	
 	BP.set_motor_power(PORT_C, 0);
