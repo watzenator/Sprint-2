@@ -130,6 +130,8 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 	EncoderB = BP.get_motor_encoder(PORT_B);
 	int32_t encoderX1 = differenceX * 250 + EncoderC;
 	int32_t encoderX2 = differenceX * 250 + EncoderB;
+	BP.get_sensor(PORT_3, &Ultrasonic3);
+	usleep(1);
 // 	std::cout << "first forward\n"; //Naar voren met PID systeem op basis van encoder afstanden
 	while(EncoderC <= encoderX1 && EncoderB <= encoderX2){
 		BP.get_sensor(PORT_3, &Ultrasonic3);
