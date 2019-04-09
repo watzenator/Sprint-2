@@ -38,7 +38,7 @@ int main(){
 		exit(-5);
 	}
 
-	BP.set_sensor_type(PORT_4, SENSOR_TYPE_EV3_GYRO_ABS);
+	BP.set_sensor_type(PORT_1, SENSOR_TYPE_EV3_GYRO_ABS);
 
 	sensor_gyro_t gyro4;
 
