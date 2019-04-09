@@ -14,11 +14,11 @@
 void turn(sensor_gyro_t & Gyro4){
 	int control;
 	while(true){
+		usleep(BASE_SLEEP);
 		control = PIDcontrol(Gyro4);
 		if(control == 0) return;
 		BP.set_motor_power(PORT_B, control/* + MOTORSPEED*/);
 		BP.set_motor_power(PORT_C, (-1 * control)/* - MOTORSPEED*/);
-		usleep(1);
 	}
 }
 
@@ -35,6 +35,11 @@ void goleft(sensor_gyro_t & Gyro4){
 void turnaround(sensor_gyro_t & Gyro4){
 	baseline -= 180;
 	turn(Gyro4);
+}
+
+void brake(){
+	BP.set_motor_power(PORT_C, 0);
+	BP.set_motor_power(PORT_B, 0);
 }
 
 #endif
