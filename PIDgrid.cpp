@@ -8,6 +8,7 @@
 #include <signal.h>     // for catching exit signals
 #include <iostream>
 #include <time.h>
+#include "sounds.h"
 
 // #include "BrickPi3.cpp"
 
@@ -45,6 +46,7 @@ int main(){
 	int8_t speedleft = MOTORSPEED;
 	int8_t speedright = MOTORSPEED;
 
+	forward_sound();
 
 	while(BP.get_sensor(PORT_1, &gyro4)){}
 	bool firstrun = true;
