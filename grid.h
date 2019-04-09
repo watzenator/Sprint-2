@@ -83,7 +83,7 @@ void object(sensor_gyro_t & Gyro4, const int32_t& encoderVerschil1, const int32_
 	int32_t encoder2 = EncoderB + encoderVerschil2;
 	
 	while(EncoderC <= encoder1 && EncoderB <= encoder2){
-		controlValue = PIDcontrol(Gyro4);
+		int controlValue = PIDcontrol(Gyro4);
 		EncoderC = BP.get_motor_encoder(PORT_C);
 		EncoderB = BP.get_motor_encoder(PORT_B);
  		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
@@ -107,14 +107,14 @@ void object(sensor_gyro_t & Gyro4, const int32_t& encoderVerschil1, const int32_
 	BP.set_motor_power(PORT_B, 0);
 	
 	while(EncoderC <= encoder1 && EncoderB <= encoder2){
-		controlValue = PIDcontrol(Gyro4);
+		int controlValue = PIDcontrol(Gyro4);
 		EncoderC = BP.get_motor_encoder(PORT_C);
 		EncoderB = BP.get_motor_encoder(PORT_B);
  		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
  		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
 		usleep(1);
 	}
-	goleft(gyro4);
+	goleft(Gyro4);
 }
 
 void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
