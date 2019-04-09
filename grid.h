@@ -90,6 +90,7 @@ void object(sensor_gyro_t & Gyro4, const int32_t& encoderVerschil1, const int32_
 		usleep(1);
 	}
 	goright(Gyro4);
+	count250s ++;
 	
 	BP.set_motor_power(PORT_C, 0);
 	BP.set_motor_power(PORT_B, 0);
@@ -217,8 +218,8 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
  		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
  		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
 		if(Ultrasonic3.cm < 6){
-			int32_t encoderVerschil1 = encoderX1 - EncoderC;
-			int32_t encoderVerschil2 = encoderX2 - EncoderB;
+			int32_t encoderVerschil1 = encoderY1 - EncoderC;
+			int32_t encoderVerschil2 = encoderY2 - EncoderB;
 			object(Gyro4, encoderVerschil1, encoderVerschil2);
 		}
 		usleep(1);
