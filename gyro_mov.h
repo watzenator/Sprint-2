@@ -32,7 +32,7 @@ void goleft(sensor_gyro_t & Gyro4){
 	turn(Gyro4);
 }
 
-void turnaround(){
+void turnaround(sensor_gyro_t & Gyro4){
 	baseline -= 180;
 	turn(Gyro4);
 }
