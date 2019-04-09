@@ -46,7 +46,7 @@ int main(){
 	int8_t speedleft = MOTORSPEED;
 	int8_t speedright = MOTORSPEED;
 
-	forward_sound();
+// 	forward_sound();
 
 	while(BP.get_sensor(PORT_1, &gyro4)){}
 	bool firstrun = true;
