@@ -36,7 +36,7 @@ location askLocation(){
 }
 
 
-void object(sensor_gyro_t & Gyro4, const int32_t& encoderVerschil1, const int32_t& encoderVerschil2){
+void object(sensor_gyro_t & Gyro4, sensor_ultrasonic_t & Ultrasonic3, const int32_t& encoderVerschil1, const int32_t& encoderVerschil2){
 	BP.get_sensor(PORT_2, &Ultrasonic3);
 	int32_t count250s = 0;
 	while(Ultrasonic3.cm < 10){
@@ -94,7 +94,7 @@ void object(sensor_gyro_t & Gyro4, const int32_t& encoderVerschil1, const int32_
 
 	BP.set_motor_power(PORT_C, 0);
 	BP.set_motor_power(PORT_B, 0);
-	Usleep(BASE_SLEEP);
+	usleep(BASE_SLEEP);
 
 	EncoderC = BP.get_motor_encoder(PORT_C);
 	EncoderB = BP.get_motor_encoder(PORT_B);
@@ -167,11 +167,11 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4, sensor_ultra
 		EncoderB = BP.get_motor_encoder(PORT_B);
  		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
  		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
-		std::cout << Ultrasonic3.cm << ''\n';
+		std::cout << Ultrasonic3.cm << \n';
 		if(Ultrasonic3.cm < 6){
 			int32_t encoderVerschil1 = encoderX1 - EncoderC;
 			int32_t encoderVerschil2 = encoderX2 - EncoderB;
-			object(Gyro4, encoderVerschil1, encoderVerschil2);
+			object(Gyro4,Ultrasonic3, encoderVerschil1, encoderVerschil2);
 		}
 		usleep(BASE_SLEEP);
 	}
@@ -211,7 +211,7 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4, sensor_ultra
 		if(Ultrasonic3.cm < 6){
 			int32_t encoderVerschil1 = encoderY1 - EncoderC;
 			int32_t encoderVerschil2 = encoderY2 - EncoderB;
-			object(Gyro4, encoderVerschil1, encoderVerschil2);
+			object(Gyro4,Ultrasonic3, encoderVerschil1, encoderVerschil2);
 		}
 		usleep(BASE_SLEEP);
 	}

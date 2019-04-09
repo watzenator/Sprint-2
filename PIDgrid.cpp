@@ -47,7 +47,7 @@ int main(){
 		startlocation = askLocation();
 		std::cout << "vul eindlocatie in\n";
 		endlocation = askLocation();
-		grid(startlocation, endlocation, gyro4);
+		grid(startlocation, endlocation, gyro4, Ultrasonic3);
 		startlocation = endlocation;
 		firstrun = false;
 	}
