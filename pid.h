@@ -36,10 +36,10 @@ void PIDconfig(pid & Pid){
 int PIDcontrol(sensor_gyro_t & Gyro4){
 	BP.get_sensor(PORT_4,&Gyro4);
 	int turnspeed = calc_degrees(Gyro4.abs - baseline) * 0.5;
-	if(turnspeed > -15 && turnspeed < 0){
-		return -15;
-	}else if(turnspeed < 15 && turnspeed > 0){
-		return 15;
+	if(turnspeed > -20 && turnspeed < 0){
+		return -20;
+	}else if(turnspeed < 20 && turnspeed > 0){
+		return 20;
 	}else{
 		return turnspeed;
 	}
