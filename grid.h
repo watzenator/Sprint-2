@@ -30,9 +30,8 @@ location askLocation(){
 	location goLoc;
 	std::cout << "Geef de x: ";
 	std::cin >> goLoc.x;
-	std::cout << "\nGeef de y: ";
+	std::cout << "Geef de y: ";
 	std::cin >> goLoc.y;
-	std::cout << "\n";
 	return goLoc;
 }
 
