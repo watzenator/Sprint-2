@@ -8,7 +8,7 @@
 #include <signal.h>     // for catching exit signals
 #include <iostream>
 #include <time.h>
-#include "sounds.h"
+//#include "sounds.h"
 
 // #include "BrickPi3.cpp"
 
