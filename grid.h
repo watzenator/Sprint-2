@@ -63,6 +63,9 @@ void object(){
 				}
 				usleep(1);
 		}
+		BP.set_motor_power(PORT_C, 0);
+		BP.set_motor_power(PORT_B, 0);
+		sleep(1);
 		// rijd 250
 		int32_t EncoderC = BP.get_motor_encoder(PORT_C);
 		int32_t EncoderB = BP.get_motor_encoder(PORT_B);
@@ -79,6 +82,8 @@ void object(){
 			usleep(1);
 		}
 
+		sleep(1);
+		
 		//gaat naar rechts
 		BP.get_sensor(PORT_4, &Gyro4);
 		usleep(1);
@@ -102,11 +107,12 @@ void object(){
 		}
 		BP.get_sensor(PORT_2, &Ultrasonic3);
 	}
-
+	
 	BP.set_motor_power(PORT_C, 0);
 	BP.set_motor_power(PORT_B, 0);
+	sleep(1);
 	printf("hetwerktahnifffauw");
-	sleep(2);
+	sleep(1);
 }
 
 void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
