@@ -16,9 +16,9 @@ void turn(sensor_gyro_t & Gyro4){
 	while(true){
 		control = PIDcontrol(Gyro4);
 		std::cout << control << '\n';
-		if(control >= -5 && control <= 5) return;
-		BP.set_motor_power(PORT_B, control /* - MOTORSPEED*/);
-		BP.set_motor_power(PORT_C, (-1 * control)/* + MOTORSPEED*/);
+		if(control >= -3 && control <= 3) return;
+		BP.set_motor_power(PORT_B, control/* + MOTORSPEED*/);
+		BP.set_motor_power(PORT_C, (-1 * control)/* - MOTORSPEED*/);
 		usleep(1);
 	}
 }
