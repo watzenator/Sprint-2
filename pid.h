@@ -34,6 +34,7 @@ void PIDconfig(pid & Pid){
 }
 
 int PIDcontrol(sensor_gyro_t & Gyro4){
+	usleep(500);
 	BP.get_sensor(PORT_1,&Gyro4);
 	std::cout << Gyro4.abs << '\n';
 	int turnspeed = calc_degrees(Gyro4.abs - baseline) * 0.5;

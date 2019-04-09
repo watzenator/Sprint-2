@@ -76,7 +76,7 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 	if(differenceY < 0){
 		goright(Gyro4);
 		turn(Gyro4);
-		
+
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
 		sleep(1);
@@ -94,7 +94,7 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 	std::cout << "second forward\n";
 	start = time(0);
 	while(differenceY > difftime( time(0), start)){
-		BP.get_sensor(PORT_4, &Gyro4);
+		//BP.get_sensor(PORT_4, &Gyro4);
 		//cout << "difftime: " << difftime( time(0), start) << "\n: " << baseline << "\n";
 		int controlValue = PIDcontrol(Gyro4);
  		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
