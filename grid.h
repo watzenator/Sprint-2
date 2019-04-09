@@ -57,6 +57,8 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 		differenceX *= -1;
 		negativeX = true;
 	}
+	EncoderC = BP.get_motor_encoder(PORT_C);
+	EncoderB = BP.get_motor_encoder(PORT_B);
 	int32_t encoderX1 = differenceX * 250 + EncoderC;
 	int32_t encoderX2 = differenceX * 250 + EncoderB;
 	std::cout << "first forward\n";
@@ -100,8 +102,10 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 		BP.set_motor_power(PORT_B, 0);
 		sleep(1);
 	}
+	EncoderC = BP.get_motor_encoder(PORT_C);
+	EncoderB = BP.get_motor_encoder(PORT_B);
 	int32_t encoderY1 = differenceY * 250 + EncoderC;
-	int32_t encoderY2 = differenceY * 250 + EncoderB; 
+	int32_t encoderY2 = differenceY * 250 + EncoderB;
 	std::cout << "second forward\n";
 
 	//start = time(0);
