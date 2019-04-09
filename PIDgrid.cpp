@@ -18,18 +18,6 @@
 
 
 int main(){
-	// location one;
-	// location two;
-	// one.x = 1;
-	// two.x = 5;
-	// one.y = 2;
-	// two.y = 6;
-	//
-	// location three = one + two;
-	// std::cout << "one " << one.x << ", " << one.y << "\n";
-	// std::cout << "two " << two.x << ", " << two.y << "\n";
-	// std::cout << "three " << three.x << ", " << three.y << "\n";
-
 	signal(SIGINT, exit_signal_handler); // register the exit function for ctrl+c
  	BP.detect(); // make sure that the brickpi3 is communicating and that the firmware is compatible with the drivers.
 
@@ -41,7 +29,7 @@ int main(){
 
 	BP.set_sensor_type(PORT_1, SENSOR_TYPE_EV3_GYRO_ABS);
 	BP.set_sensor_type(PORT_2, SENSOR_TYPE_NXT_ULTRASONIC);
-	
+
 	sensor_ultrasonic_t Ultrasonic3;
 	sensor_gyro_t gyro4;
 
