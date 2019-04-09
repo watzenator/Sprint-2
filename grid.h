@@ -42,7 +42,7 @@ void object(){
 	BP.get_sensor(PORT_2, &Ultrasonic3);
 	while(Ultrasonic3.cm < 10){
 		// gaat naar links
-		goleft();
+		goleft(Gyro4);
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
 		sleep(1);
@@ -65,7 +65,7 @@ void object(){
 		sleep(1);
 		
 		//gaat naar rechts
-		goright();
+		goright(Gyro4);
 		BP.get_sensor(PORT_2, &Ultrasonic3);
 	}
 	
