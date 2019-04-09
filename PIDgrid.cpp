@@ -46,7 +46,7 @@ int main(){
 	int8_t speedright = MOTORSPEED;
 
 
-	while(BP.get_sensor(PORT_4, &gyro4)){}
+	while(BP.get_sensor(PORT_1, &gyro4)){}
 	bool firstrun = true;
 	location startlocation;
 	location endlocation;
