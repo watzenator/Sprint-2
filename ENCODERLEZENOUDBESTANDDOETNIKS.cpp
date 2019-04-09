@@ -215,8 +215,8 @@ int main(){
 		time_t start;
 		start = time(0);
 		while((EncoderC <= afstand) && (EncoderB <= afstand)){
-			int32_t EncoderC = BP.get_motor_encoder(PORT_C);
-			int32_t EncoderB = BP.get_motor_encoder(PORT_B);
+			EncoderC = BP.get_motor_encoder(PORT_C);
+			EncoderB = BP.get_motor_encoder(PORT_B);
 			int controlValue = PIDcontrol(Pid, baseline, Gyro4);
 			BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
 			BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
