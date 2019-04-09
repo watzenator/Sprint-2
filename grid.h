@@ -56,10 +56,11 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 		differenceX *= -1;
 		negativeX = true;
 	}
-	int32_t encoderX = differenceX * 250;
+	int32_t encoderX1 = differenceX * 250 + EncoderC;
+	int32_t encoderX2 = differenceX * 250 + EncoderB;
 	std::cout << "first forward\n";
 	//start = time(0);
-	while(EncoderC <= encoderX && EncoderB <= encoderX){
+	while(EncoderC <= encoderX1 && EncoderB <= encoderX2){
 		int controlValue = PIDcontrol(Gyro4);
 		BP.get_sensor(PORT_4, &Gyro4);
 		EncoderC = BP.get_motor_encoder(PORT_C);
@@ -97,10 +98,11 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 		BP.set_motor_power(PORT_B, 0);
 		sleep(1);
 	}
-	int32_t encoderY = differenceY * 250;
+	int32_t encoderY1 = differenceY * 250 + EncoderC;
+	int32_t encoderY2 = differenceY * 250 + EncoderB; 
 	std::cout << "second forward\n";
 	//start = time(0);
-	while(EncoderC <= encoderY && EncoderB <= encoderY){
+	while(EncoderC <= encoderY1 && EncoderB <= encoderY2){
 		BP.get_sensor(PORT_4, &Gyro4);
 		//cout << "difftime: " << difftime( time(0), start) << "\n: " << baseline << "\n";
 		int controlValue = PIDcontrol(Gyro4);
