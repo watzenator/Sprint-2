@@ -26,8 +26,6 @@ struct location{
   }
 };
 
-
-
 location askLocation(){
 	location goLoc;
 	std::cout << "Geef de x: ";
@@ -38,20 +36,17 @@ location askLocation(){
 	return goLoc;
 }
 
-
 void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
-	pid Pid;
-	//time_t start;
 	double differenceX = endLoc.x - startLoc.x;
 	double differenceY = endLoc.y - startLoc.y;
 	bool negativeX = false;
 	bool negativeY = false;
 	int32_t EncoderC = BP.get_motor_encoder(PORT_C);
 	int32_t EncoderB = BP.get_motor_encoder(PORT_B);
-	std::cout << "start\n";
+	int controlValue;
+// 	std::cout << "start\n"; //Start draaien op basis van het grid
 	if(differenceX < 0){
 		turnaround();
-		turn(Gyro4);
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
 		differenceX *= -1;
@@ -61,10 +56,9 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 	EncoderB = BP.get_motor_encoder(PORT_B);
 	int32_t encoderX1 = differenceX * 250 + EncoderC;
 	int32_t encoderX2 = differenceX * 250 + EncoderB;
-	std::cout << "first forward\n";
-	//start = time(0);
+// 	std::cout << "first forward\n"; //Naar voren met PID systeem op basis van encoder afstanden
 	while(EncoderC <= encoderX1 && EncoderB <= encoderX2){
-		int controlValue = PIDcontrol(Gyro4);
+		controlValue = PIDcontrol(Gyro4);
 		BP.get_sensor(PORT_4, &Gyro4);
 		EncoderC = BP.get_motor_encoder(PORT_C);
 		EncoderB = BP.get_motor_encoder(PORT_B);
@@ -72,70 +66,56 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
  		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
 		usleep(1);
 	}
-	std::cout << "first break\n";
+// 	std::cout << "first break\n"; //Tweede draaien op basis van grid
 	BP.set_motor_power(PORT_C, 0);
 	BP.set_motor_power(PORT_B, 0);
-	sleep(1);
+	usleep(500);
 	if(negativeX == 1){
 		turnaround();
-		turn(Gyro4);
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
-		sleep(1);
+		usleep(500);
 	}
 
 	if(differenceY < 0){
 		goright(Gyro4);
-		turn(Gyro4);
-
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
-		sleep(1);
+		usleep(500);
 		differenceY *= -1;
 		negativeY = true;
 	}else{
 		goleft(Gyro4);
-		turn(Gyro4);
-
-		std::cout << "yes" << std::endl;
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
-		sleep(1);
+		usleep(500);
 	}
 	EncoderC = BP.get_motor_encoder(PORT_C);
 	EncoderB = BP.get_motor_encoder(PORT_B);
 	int32_t encoderY1 = differenceY * 250 + EncoderC;
 	int32_t encoderY2 = differenceY * 250 + EncoderB;
-	std::cout << "second forward\n";
-
-	//start = time(0);
+// 	std::cout << "second forward\n"; //Naar voren met PID systeem op basis van encoder afstanden
 	while(EncoderC <= encoderY1 && EncoderB <= encoderY2){
-		//BP.get_sensor(PORT_4, &Gyro4);
-		//cout << "difftime: " << difftime( time(0), start) << "\n: " << baseline << "\n";
-		int controlValue = PIDcontrol(Gyro4);
+		controlValue = PIDcontrol(Gyro4);
 		EncoderC = BP.get_motor_encoder(PORT_C);
 		EncoderB = BP.get_motor_encoder(PORT_B);
  		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
  		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
 		usleep(1);
 	}
-	std::cout << "second break\n";
 	BP.set_motor_power(PORT_C, 0);
 	BP.set_motor_power(PORT_B, 0);
-	std::cout << "reset orientation\n";
-	sleep(3);
+// 	std::cout << "reset orientation\n"; //Draaien voor oriëntatie
+	usleep(500);
 	if(negativeY == 1){
 		goleft(Gyro4);
-		turn(Gyro4);
-
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
 	}else{
 		goright(Gyro4);
-		turn(Gyro4);
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
 	}
-	sleep(1);
+	usleep(500);
 }
 #endif
