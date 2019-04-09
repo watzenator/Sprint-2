@@ -37,7 +37,7 @@ location askLocation(){
 }
 
 
-void object(){
+void object(sensor_gyro_t & Gyro4){
 	sensor_ultrasonic_t Ultrasonic3;
 	BP.get_sensor(PORT_2, &Ultrasonic3);
 	while(Ultrasonic3.cm < 10){
@@ -111,7 +111,7 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
  		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
 		std::cout << Ultrasonic3.cm << "\n";
 		if(Ultrasonic3.cm < 6){
-			object();
+			object(Gyro4);
 		}
 		usleep(1);
 	}
