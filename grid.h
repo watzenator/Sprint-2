@@ -118,7 +118,7 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 	int32_t EncoderB = BP.get_motor_encoder(PORT_B);
 	int controlValue;
 	sensor_ultrasonic_t Ultrasonic3;
-	while(BP.get_sensor(PORT_3, &Ultrasonic3)){}
+// 	while(BP.get_sensor(PORT_3, &Ultrasonic3)){}
 // 	std::cout << "start\n"; //Start draaien op basis van het grid
 	if(differenceX < 0){
 		turnaround(Gyro4);
