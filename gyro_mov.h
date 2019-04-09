@@ -15,7 +15,7 @@ void turn(sensor_gyro_t & Gyro4){
 	int control;
 	while(true){
 		control = PIDcontrol(Gyro4);
-		std::cout << control << '\n';
+		//std::cout << control << '\n';
 		if(control == 0) return;
 		BP.set_motor_power(PORT_B, control/* + MOTORSPEED*/);
 		BP.set_motor_power(PORT_C, (-1 * control)/* - MOTORSPEED*/);
