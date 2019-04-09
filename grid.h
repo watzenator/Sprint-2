@@ -153,8 +153,8 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 		std::cout << Ultrasonic3.cm << "\n";
 		if(Ultrasonic3.cm < 6){
 			int32_t encoderVerschil1 = encoderX1 - EncoderC;
-			int32_t encoderVerschil2 = EncoderX2 - EncoderB;
-			object(Gyro4, encoderVerschl1, encoderVerschil2);
+			int32_t encoderVerschil2 = encoderX2 - EncoderB;
+			object(Gyro4, encoderVerschil1, encoderVerschil2);
 		}
 		usleep(1);
 	}
