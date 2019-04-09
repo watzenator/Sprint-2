@@ -38,7 +38,6 @@ location askLocation(){
 
 
 void object(sensor_gyro_t & Gyro4, const int32_t& encoderVerschil1, const int32_t& encoderVerschil2){
-	sensor_ultrasonic_t Ultrasonic3;
 	BP.get_sensor(PORT_2, &Ultrasonic3);
 	int32_t count250s = 0;
 	while(Ultrasonic3.cm < 10){
@@ -60,10 +59,12 @@ void object(sensor_gyro_t & Gyro4, const int32_t& encoderVerschil1, const int32_
 			BP.get_sensor(PORT_4, &Gyro4);
 			BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
 			BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
-			usleep(1);
+			usleep(BASE_SLEEP);
 		}
-
-		sleep(1);
+		BP.set_motor_power(PORT_C, 0);
+		BP.set_motor_power(PORT_B, 0);
+		
+		usleep(BASE_SLEEP);
 		
 		//gaat naar rechts
 		goright(Gyro4);
@@ -74,8 +75,8 @@ void object(sensor_gyro_t & Gyro4, const int32_t& encoderVerschil1, const int32_
 	goleft(Gyro4);
 	BP.set_motor_power(PORT_C, 0);
 	BP.set_motor_power(PORT_B, 0);
-	sleep(1);
-		
+	usleep(BASE_SLEEP);
+	
 	int32_t EncoderC = BP.get_motor_encoder(PORT_C);
 	int32_t EncoderB = BP.get_motor_encoder(PORT_B);
 	int32_t encoder1 = EncoderC + 250;
@@ -87,16 +88,14 @@ void object(sensor_gyro_t & Gyro4, const int32_t& encoderVerschil1, const int32_
 		EncoderB = BP.get_motor_encoder(PORT_B);
  		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
  		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
-		usleep(1);
+		usleep(BASE_SLEEP);
 	}
 	goright(Gyro4);
 	count250s ++;
 	
 	BP.set_motor_power(PORT_C, 0);
 	BP.set_motor_power(PORT_B, 0);
-	sleep(1);
-	printf("ff sleep");
-	sleep(1);
+	Usleep(BASE_SLEEP);
 	
 	EncoderC = BP.get_motor_encoder(PORT_C);
 	EncoderB = BP.get_motor_encoder(PORT_B);
@@ -109,14 +108,12 @@ void object(sensor_gyro_t & Gyro4, const int32_t& encoderVerschil1, const int32_
 		EncoderB = BP.get_motor_encoder(PORT_B);
  		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
  		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
-		usleep(1);
+		usleep(BASE_SLEEP);
 	}
 	
 	BP.set_motor_power(PORT_C, 0);
 	BP.set_motor_power(PORT_B, 0);
-	sleep(1);
-	printf("Ver genoeg alleen nog terug naar lijn....");
-	sleep(1);	
+	usleep(BASE_SLEEP);	
 	count250s *= 250;
 	
 	goright(Gyro4);
@@ -134,9 +131,10 @@ void object(sensor_gyro_t & Gyro4, const int32_t& encoderVerschil1, const int32_
 		EncoderB = BP.get_motor_encoder(PORT_B);
  		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
  		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
-		usleep(1);
+		usleep(BASE_SLEEP);
 	}
 	goleft(Gyro4);
+	usleep(BASE_SLEEP);
 }
 
 void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
