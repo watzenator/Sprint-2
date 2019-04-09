@@ -46,7 +46,7 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 	int controlValue;
 // 	std::cout << "start\n"; //Start draaien op basis van het grid
 	if(differenceX < 0){
-		turnaround();
+		turnaround(Gyro4);
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
 		differenceX *= -1;
@@ -71,7 +71,7 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 	BP.set_motor_power(PORT_B, 0);
 	usleep(500);
 	if(negativeX == 1){
-		turnaround();
+		turnaround(Gyro4);
 		BP.set_motor_power(PORT_C, 0);
 		BP.set_motor_power(PORT_B, 0);
 		usleep(500);
