@@ -214,7 +214,7 @@ int main(){
 		BP.get_sensor(PORT_4, &Gyro4);
 		time_t start;
 		start = time(0);
-		while(EncoderC < afstand && EncoderB < afstand){
+		while((EncoderC <= afstand) && (EncoderB <= afstand)){
 			int32_t EncoderC = BP.get_motor_encoder(PORT_C);
 			int32_t EncoderB = BP.get_motor_encoder(PORT_B);
 			int controlValue = PIDcontrol(Pid, baseline, Gyro4);
