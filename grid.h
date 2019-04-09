@@ -68,7 +68,7 @@ void object(){
 		int32_t EncoderB = BP.get_motor_encoder(PORT_B);
 		int32_t encoder1 = EncoderC + 250;
 		int32_t encoder2 = EncoderB + 250;
-		
+
 		while(EncoderC <= encoder1 && EncoderB <= encoder2){
 			EncoderC = BP.get_motor_encoder(PORT_C);
 			EncoderB = BP.get_motor_encoder(PORT_B);
@@ -78,7 +78,7 @@ void object(){
 			BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
 			usleep(1);
 		}
-		
+
 		//gaat naar rechts
 		BP.get_sensor(PORT_4, &Gyro4);
 		usleep(1);
@@ -102,7 +102,7 @@ void object(){
 		}
 		BP.get_sensor(PORT_3, &Ultrasonic3);
 	}
-	
+
 	BP.set_motor_power(PORT_C, 0);
 	BP.set_motor_power(PORT_B, 0);
 	printf("hetwerktahnifffauw");
@@ -118,6 +118,7 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 	int32_t EncoderB = BP.get_motor_encoder(PORT_B);
 	int controlValue;
 	sensor_ultrasonic_t Ultrasonic3;
+	while(BP.get_sensor(PORT_3, &Ultrasonic3){}
 // 	std::cout << "start\n"; //Start draaien op basis van het grid
 	if(differenceX < 0){
 		turnaround(Gyro4);
@@ -130,7 +131,7 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 	EncoderB = BP.get_motor_encoder(PORT_B);
 	int32_t encoderX1 = differenceX * 250 + EncoderC;
 	int32_t encoderX2 = differenceX * 250 + EncoderB;
-	BP.get_sensor(PORT_3, &Ultrasonic3);
+	//BP.get_sensor(PORT_3, &Ultrasonic3);
 	usleep(1);
 // 	std::cout << "first forward\n"; //Naar voren met PID systeem op basis van encoder afstanden
 	while(EncoderC <= encoderX1 && EncoderB <= encoderX2){
@@ -199,4 +200,3 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 	usleep(500);
 }
 #endif
-
