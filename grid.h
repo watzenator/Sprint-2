@@ -142,7 +142,7 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4){
 		EncoderB = BP.get_motor_encoder(PORT_B);
  		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
  		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
-		std::cout << Ultrasonic3 << endl;
+		std::cout << Ultrasonic3.cm << "\n";
 		if(Ultrasonic3.cm < 6){
 			object();
 		}
