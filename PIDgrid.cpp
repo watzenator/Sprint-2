@@ -38,7 +38,7 @@ int main(){
 		exit(-5);
 	}
 
-	BP.set_sensor_type(PORT_4, SENSOR_TYPE_EV3_GYRO_ABS);
+	BP.set_sensor_type(PORT_1, SENSOR_TYPE_EV3_GYRO_ABS);
 
 	sensor_gyro_t gyro4;
 
@@ -46,7 +46,7 @@ int main(){
 	int8_t speedright = MOTORSPEED;
 
 
-	while(BP.get_sensor(PORT_4, &gyro4)){}
+	while(BP.get_sensor(PORT_1, &gyro4)){}
 	bool firstrun = true;
 	location startlocation;
 	location endlocation;
