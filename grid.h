@@ -98,13 +98,14 @@ void object(sensor_gyro_t & Gyro4, const int32_t& encoderVerschil1, const int32_
 	sleep(1);	
 	count250s *= 250;
 	
+	goright(Gyro4);
+	BP.set_motor_power(PORT_C, 0);
+	BP.set_motor_power(PORT_B, 0);
+	
 	EncoderC = BP.get_motor_encoder(PORT_C);
 	EncoderB = BP.get_motor_encoder(PORT_B);
 	encoder1 = EncoderC + count250s;
 	encoder2 = EncoderB + count250s;
-	goright(Gyro4);
-	BP.set_motor_power(PORT_C, 0);
-	BP.set_motor_power(PORT_B, 0);
 	
 	while(EncoderC <= encoder1 && EncoderB <= encoder2){
 		int controlValue = PIDcontrol(Gyro4);
