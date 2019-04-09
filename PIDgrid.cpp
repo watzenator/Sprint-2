@@ -40,8 +40,9 @@ int main(){
 	}
 
 	BP.set_sensor_type(PORT_1, SENSOR_TYPE_EV3_GYRO_ABS);
-	BP.set_sensor_type(PORT_3, SENSOR_TYPE_NXT_ULTRASONIC);
+	BP.set_sensor_type(PORT_2, SENSOR_TYPE_NXT_ULTRASONIC);
 	
+	sensor_ultrasonic_t Ultrasonic3;
 	sensor_gyro_t gyro4;
 
 	int8_t speedleft = MOTORSPEED;
