@@ -1,10 +1,10 @@
 #include <wiringPi.h>
 int main(){
   wiringPiSetup();
-  pinMode (0,OUTPUT);
+  pinMode (GPIO17,OUTPUT);
   while(true){
-    digitalWrite(0,HIGH); dely(500);
-    digitalWrite(0,LOW); dely(500);
+    digitalWrite(GPIO17,HIGH); dely(500);
+    digitalWrite(GPIO17,LOW); dely(500);
   }
   return 0;
 }
