@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 
 // void kill_all_sound(){
@@ -28,7 +30,7 @@ void left_sound(){
     exit(0);
   }else{
     //parent
-    wait();
+    wait(NULL);
     return;
   }
 }
