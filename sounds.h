@@ -30,7 +30,7 @@ void left_sound(){
     //exit(0);
   }else{
     //parent
-    wait(NULL);
+    //wait(NULL);
     return;
   }
 }
