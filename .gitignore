@@ -30,3 +30,5 @@
 *.exe
 *.out
 *.app
+.vscode/ipch/1aa06097d69579b5/mmap_address.bin
+.vscode/ipch/1aa06097d69579b5/PIDGRID.ipch
