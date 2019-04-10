@@ -178,19 +178,31 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4, sensor_ultra
 // 	std::cout << "first break\n"; //Tweede draaien op basis van grid
 	brake();
 	usleep(BASE_SLEEP);
-	if(negativeX == 1){
-		turnaround(Gyro4);
+	if(negativeX == 1 && differenceY < 0){
+		goleft(Gyro4);
+		brake();
+		usleep(BASE_SLEEP);
+		differenceY *= -1;
+		negativeY = true;
+	}
+	else if(negativeX == 1) && differenceY > 0){
+		goright(Gyro4);
 		brake();
 		usleep(BASE_SLEEP);
 	}
-
-	if(differenceY < 0){
+	else if(negativeX == 0 && differenceY < 0){
 		goright(Gyro4);
 		brake();
 		usleep(BASE_SLEEP);
 		differenceY *= -1;
 		negativeY = true;
-	}else{
+	}
+	else if(negativeX == 0 && differenceY > 0){
+		goleft(Gyro4);
+		brake();
+		usleep(BASE_SLEEP);
+	}
+	else{
 		goleft(Gyro4);
 		brake();
 		usleep(BASE_SLEEP);
