@@ -28,6 +28,7 @@ void left_sound(){
     exit(0);
   }else{
     //parent
+    wait();
     return;
   }
 }
