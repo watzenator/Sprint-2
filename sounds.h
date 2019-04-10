@@ -25,8 +25,8 @@ void left_sound(){
   if(fork() == 0){
     //child
     char* args[] = {(char*)"/usr/bin/aplay",(char*) "./left.wav",(char*)"-q", (char*) NULL};
-    //execl(args[0], args, NULL);
-    execv(args[0], &args[0]);
+    execl((char*)"/usr/bin/aplay", (char*) "./left.wav",(char*)"-q", (char*)NULL);
+    // execv(args[0], &args[0]);
     std::cout << "testing";
     exit(0);
   }else{
