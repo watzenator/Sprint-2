@@ -27,7 +27,7 @@ void left_sound(){
     char* args[] = {(char*)"/usr/bin/aplay",(char*) "./left.wav", NULL};
     execve(args[0], args, NULL);
     //kill(getpid(), SIGKILL);
-    exit(0);
+    //exit(0);
   }else{
     //parent
     wait(NULL);
