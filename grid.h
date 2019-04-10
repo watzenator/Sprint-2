@@ -185,7 +185,7 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4, sensor_ultra
 		differenceY *= -1;
 		negativeY = true;
 	}
-	else if(negativeX == 1) && differenceY > 0){
+	else if(negativeX == 1 && differenceY > 0){
 		goright(Gyro4);
 		brake();
 		usleep(BASE_SLEEP);
