@@ -26,7 +26,7 @@ void left_sound(){
     //child
     char* args[] = {(char*)"/usr/bin/aplay",(char*) "./left.wav", (char*) "-q"};
     // execl(args[0], args, NULL);
-    execl((char*)"/usr/bin/aplay" , (char*) "./left.wav");
+    execl((char*)"/usr/bin/aplay ./left.wav");
     std::cout << "testing";
     exit(0);
   }else{
