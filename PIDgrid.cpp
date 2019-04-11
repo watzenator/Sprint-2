@@ -34,11 +34,6 @@ int main(){
 	sensor_ultrasonic_t Ultrasonic3;
 	sensor_gyro_t Gyro4;
 
-	int8_t speedleft = MOTORSPEED;
-	int8_t speedright = MOTORSPEED;
-
-// 	forward_sound();
-
 	while(BP.get_sensor(PORT_4, &Gyro4)){}
 	bool firstrun = true;
 	location startlocation;
