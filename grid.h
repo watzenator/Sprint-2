@@ -300,7 +300,7 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4, sensor_ultra
 		EncoderB = BP.get_motor_encoder(PORT_B);
  		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
  		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
-		if(Ultrasonic3.cm < 6){
+		if(Ultrasonic3.cm < 10){
 			int32_t encoderVerschil1 = encoderY1 - EncoderC;
 			int32_t encoderVerschil2 = encoderY2 - EncoderB;
 			object(Gyro4,Ultrasonic3, encoderVerschil1, encoderVerschil2);
