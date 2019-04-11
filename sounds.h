@@ -24,13 +24,3 @@ void right_sound(){
     return;
   }
 }
-
-void right_sound(){
-  if(fork() == 0){
-    //child
-    char* args[] = {(char*)"/usr/bin/aplay",(char*) "./forward.wav",(char*)"-q", (char*) NULL};
-    execv(args[0], &args[0]);
-  }else{
-    return;
-  }
-}

@@ -10,6 +10,7 @@
 #include <signal.h>     // for catching exit signals
 #include <iostream>
 #include <time.h>
+#iclude "sounds.h"
 
 void turn(sensor_gyro_t & Gyro4){
 	int control;
@@ -23,11 +24,13 @@ void turn(sensor_gyro_t & Gyro4){
 }
 
 void goright(sensor_gyro_t & Gyro4){
+	right_sound();
 	baseline += 90;
 	turn(Gyro4);
 }
 
 void goleft(sensor_gyro_t & Gyro4){
+	left_sound();
 	baseline -= 90;
 	turn(Gyro4);
 }
