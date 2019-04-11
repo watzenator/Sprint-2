@@ -43,7 +43,7 @@ int main(){
                 }else if(input == "RIGHT"){
                     goright(Gyro4);
                 }else if(input == "UP"){
-                    goforward_man(250, Gyro4);
+                    goforward_man(1, Gyro4);
                 }else if(input == "DOWN"){
                     turnaround(Gyro4);
                 }else if(input == "FIRE"){
