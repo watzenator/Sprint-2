@@ -45,4 +45,41 @@ void brake(){
 	BP.set_motor_power(PORT_B, 0);
 }
 
+void goforward_man(double distance, sensor_gyro_t & Gyro4){
+	int controlValue;
+	int32_t encoder1 = distance * 250 + BP.get_motor_encoder(PORT_C);
+	int32_t encoder2 = distance * 250 + BP.get_motor_encoder(PORT_B);
+
+	while(BP.get_motor_encoder(PORT_C) <= encoder1 && BP.get_motor_encoder(PORT_B) <= encoder2){
+		BP.get_sensor(PORT_4, &Gyro4);
+		controlValue = PIDcontrol(Gyro4);
+ 		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
+ 		BP.set_motor_power(PORT_B, controlValue + MOTORSPEED);
+		usleep(BASE_SLEEP);
+	}
+}
+
+void goforward_auto(const int32_t & distance, sensor_gyro_t & Gyro4, sensor_ultrasonic_t & Ultrasonic3){
+	int controlValue;
+	int32_t encoder1 = distance * 250 + BP.get_motor_encoder(PORT_C);
+	int32_t encoder2 = distance * 250 + BP.get_motor_encoder(PORT_B);
+
+	while(BP.get_motor_encoder(PORT_C) <= encoder1 && BP.get_motor_encoder(PORT_B) <= encoder2){
+		BP.get_sensor(PORT_4, &Gyro4);
+		controlValue = PIDcontrol(Gyro4);
+ 		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
+ 		BP.set_motor_power(PORT_B, controlValue + MOTORSPEED);
+
+		BP.get_sensor(PORT_3, &Ultrasonic3);
+		if(Ultrasonic3.cm < 10){
+			int32_t encoderVerschil1 = encoder1 - BP.get_motor_encoder(PORT_C);
+			int32_t encoderVerschil2 = encoder2 - BP.get_motor_encoder(PORT_B);
+			object(Gyro4,Ultrasonic3, encoderVerschil1, encoderVerschil2);
+		}
+		usleep(BASE_SLEEP);
+	}
+}
+
+
+
 #endif

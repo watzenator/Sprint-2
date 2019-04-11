@@ -216,41 +216,13 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4, sensor_ultra
 	double differenceY = endLoc.y - startLoc.y;
 	bool negativeX = false;
 	bool negativeY = false;
-	int32_t EncoderC = BP.get_motor_encoder(PORT_C);
-	int32_t EncoderB = BP.get_motor_encoder(PORT_B);
-	int controlValue;
-// 	while(BP.get_sensor(PORT_3, &Ultrasonic3)){}
-// 	std::cout << "start\n"; //Start draaien op basis van het grid
 	if(differenceX < 0){
 		turnaround(Gyro4);
 		brake();
 		differenceX *= -1;
 		negativeX = true;
 	}
-	EncoderC = BP.get_motor_encoder(PORT_C);
-	EncoderB = BP.get_motor_encoder(PORT_B);
-	int32_t encoderX1 = differenceX * 250 + EncoderC;
-	int32_t encoderX2 = differenceX * 250 + EncoderB;
-	//BP.get_sensor(PORT_3, &Ultrasonic3);
-	usleep(BASE_SLEEP);
-// 	std::cout << "first forward\n"; //Naar voren met PID systeem op basis van encoder afstanden
-	while(EncoderC <= encoderX1 && EncoderB <= encoderX2){
-		BP.get_sensor(PORT_3, &Ultrasonic3);
-		controlValue = PIDcontrol(Gyro4);
-		BP.get_sensor(PORT_4, &Gyro4);
-		EncoderC = BP.get_motor_encoder(PORT_C);
-		EncoderB = BP.get_motor_encoder(PORT_B);
- 		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
- 		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
-		std::cout << Ultrasonic3.cm << '\n';
-		if(Ultrasonic3.cm < 10){
-			int32_t encoderVerschil1 = encoderX1 - EncoderC;
-			int32_t encoderVerschil2 = encoderX2 - EncoderB;
-			object(Gyro4,Ultrasonic3, encoderVerschil1, encoderVerschil2);
-		}
-		usleep(BASE_SLEEP);
-	}
-// 	std::cout << "first break\n"; //Tweede draaien op basis van grid
+	goforward_auto(differenceX);
 	brake();
 	usleep(BASE_SLEEP);
 	if(negativeX == 1 && differenceY < 0){
@@ -287,28 +259,8 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4, sensor_ultra
 		brake();
 		usleep(BASE_SLEEP);
 	}
-	EncoderC = BP.get_motor_encoder(PORT_C);
-	EncoderB = BP.get_motor_encoder(PORT_B);
-	int32_t encoderY1 = differenceY * 250 + EncoderC;
-	int32_t encoderY2 = differenceY * 250 + EncoderB;
-// 	std::cout << "second forward\n"; //Naar voren met PID systeem op basis van encoder afstanden
-	while(EncoderC <= encoderY1 && EncoderB <= encoderY2){
-		BP.get_sensor(PORT_3, &Ultrasonic3);
-		controlValue = PIDcontrol(Gyro4);
-		BP.get_sensor(PORT_4, &Gyro4);
-		EncoderC = BP.get_motor_encoder(PORT_C);
-		EncoderB = BP.get_motor_encoder(PORT_B);
- 		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
- 		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
-		if(Ultrasonic3.cm < 10){
-			int32_t encoderVerschil1 = encoderY1 - EncoderC;
-			int32_t encoderVerschil2 = encoderY2 - EncoderB;
-			object(Gyro4,Ultrasonic3, encoderVerschil1, encoderVerschil2);
-		}
-		usleep(BASE_SLEEP);
-	}
+	goforward_auto(differenceY, Gyro4, Ultrasonic3);
 	brake();
-// 	std::cout << "reset orientation\n"; //Draaien voor oriëntatie
 	usleep(BASE_SLEEP);
 	if(negativeY == 1){
 		goleft(Gyro4);
