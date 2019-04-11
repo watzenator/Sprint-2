@@ -111,7 +111,8 @@ void object(sensor_gyro_t & Gyro4, sensor_ultrasonic_t & Ultrasonic3, const int3
 		usleep(BASE_SLEEP);
 	}
 	goright(Gyro4);
-	int count250sforward ++; 
+	int count250sforward = 0;
+	count250sforward ++;
 	
 	//
 	BP.get_sensor(PORT_3, &Ultrasonic3);
