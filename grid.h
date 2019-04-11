@@ -95,11 +95,68 @@ void object(sensor_gyro_t & Gyro4, sensor_ultrasonic_t & Ultrasonic3, const int3
 	BP.set_motor_power(PORT_C, 0);
 	BP.set_motor_power(PORT_B, 0);
 	usleep(BASE_SLEEP);
-
+	
+	//
 	EncoderC = BP.get_motor_encoder(PORT_C);
 	EncoderB = BP.get_motor_encoder(PORT_B);
-	encoder1 = EncoderC + encoderVerschil1;
-	encoder2 = EncoderB + encoderVerschil2;
+	encoder1 = EncoderC + 250;
+	encoder2 = EncoderB + 250;
+	
+	while(EncoderC <= encoder1 && EncoderB <= encoder2){
+		int controlValue = PIDcontrol(Gyro4);
+		EncoderC = BP.get_motor_encoder(PORT_C);
+		EncoderB = BP.get_motor_encoder(PORT_B);
+ 		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
+ 		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
+		usleep(BASE_SLEEP);
+	}
+	goright(Gyro4);
+	int count250sforward ++; 
+	
+	//
+	BP.get_sensor(PORT_3, &Ultrasonic3);
+	int32_t count250s = 0;
+	while(Ultrasonic3.cm < 10){
+		// gaat naar links
+		goleft(Gyro4);
+		BP.set_motor_power(PORT_C, 0);
+		BP.set_motor_power(PORT_B, 0);
+		usleep(BASE_SLEEP);
+		// rijd 250
+		int32_t EncoderC = BP.get_motor_encoder(PORT_C);
+		int32_t EncoderB = BP.get_motor_encoder(PORT_B);
+		int32_t encoder1 = EncoderC + 250;
+		int32_t encoder2 = EncoderB + 250;
+
+		while(EncoderC <= encoder1 && EncoderB <= encoder2){
+			EncoderC = BP.get_motor_encoder(PORT_C);
+			EncoderB = BP.get_motor_encoder(PORT_B);
+			int controlValue = PIDcontrol(Gyro4);
+			BP.get_sensor(PORT_4, &Gyro4);
+			BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
+			BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
+			usleep(BASE_SLEEP);
+		}
+		BP.set_motor_power(PORT_C, 0);
+		BP.set_motor_power(PORT_B, 0);
+
+		usleep(BASE_SLEEP);
+
+		//gaat naar rechts
+		goright(Gyro4);
+		count250sforward ++;
+		BP.get_sensor(PORT_3, &Ultrasonic3);
+	}
+
+	goleft(Gyro4);
+	BP.set_motor_power(PORT_C, 0);
+	BP.set_motor_power(PORT_B, 0);
+	usleep(BASE_SLEEP);
+
+	int32_t EncoderC = BP.get_motor_encoder(PORT_C);
+	int32_t EncoderB = BP.get_motor_encoder(PORT_B);
+	int32_t encoder1 = EncoderC + 250;
+	int32_t encoder2 = EncoderB + 250;
 
 	while(EncoderC <= encoder1 && EncoderB <= encoder2){
 		int controlValue = PIDcontrol(Gyro4);
@@ -109,7 +166,9 @@ void object(sensor_gyro_t & Gyro4, sensor_ultrasonic_t & Ultrasonic3, const int3
  		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
 		usleep(BASE_SLEEP);
 	}
-
+	count250sforward ++;
+	//
+	
 	BP.set_motor_power(PORT_C, 0);
 	BP.set_motor_power(PORT_B, 0);
 	usleep(BASE_SLEEP);
@@ -134,6 +193,22 @@ void object(sensor_gyro_t & Gyro4, sensor_ultrasonic_t & Ultrasonic3, const int3
 	}
 	goleft(Gyro4);
 	usleep(BASE_SLEEP);
+	
+	count250sforward *= 250;
+		
+	EncoderC = BP.get_motor_encoder(PORT_C);
+	EncoderB = BP.get_motor_encoder(PORT_B);
+	encoder1 = EncoderC + encoderVerschil1 - count250sforward;
+	encoder2 = EncoderB + encoderVerschil2 -count250sforward;
+
+	while(EncoderC <= encoder1 && EncoderB <= encoder2){
+		int controlValue = PIDcontrol(Gyro4);
+		EncoderC = BP.get_motor_encoder(PORT_C);
+		EncoderB = BP.get_motor_encoder(PORT_B);
+ 		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
+ 		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
+		usleep(BASE_SLEEP);
+	}
 }
 
 void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4, sensor_ultrasonic_t & Ultrasonic3){
