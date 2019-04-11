@@ -11,7 +11,7 @@
 #include <iostream>
 #include <time.h>
 #include "sounds.h"
-#include "grid.h"
+
 
 void turn(sensor_gyro_t & Gyro4){
 	int control;
