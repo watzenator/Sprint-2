@@ -235,7 +235,7 @@ void goforward_man(double distance, sensor_gyro_t & Gyro4){
 		BP.get_sensor(PORT_4, &Gyro4);
 		controlValue = PIDcontrol(Gyro4);
  		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
- 		BP.set_motor_power(PORT_B, controlValue + MOTORSPEED);
+ 		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
 		usleep(BASE_SLEEP);
 	}
 }
@@ -249,7 +249,7 @@ void goforward_auto(const int32_t & distance, sensor_gyro_t & Gyro4, sensor_ultr
 		BP.get_sensor(PORT_4, &Gyro4);
 		controlValue = PIDcontrol(Gyro4);
  		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
- 		BP.set_motor_power(PORT_B, controlValue + MOTORSPEED);
+ 		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
 
 		BP.get_sensor(PORT_3, &Ultrasonic3);
 		if(Ultrasonic3.cm < 10){
