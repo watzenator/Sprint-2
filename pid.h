@@ -21,10 +21,10 @@ int PIDcontrol(sensor_gyro_t & Gyro4){
 	BP.get_sensor(PORT_4, &Gyro4);
 	std::cout << Gyro4.abs << '\n';
 	int turnspeed = calc_degrees(Gyro4.abs - baseline) * 0.5;
-	if(turnspeed > -50 && turnspeed < 0){
-		return -50;
-	}else if(turnspeed < 50 && turnspeed > 0){
-		return 50;
+	if(turnspeed > -40 && turnspeed < 0){
+		return -40;
+	}else if(turnspeed < 40 && turnspeed > 0){
+		return 40;
 	}else{
 		return turnspeed;
 	}
