@@ -9,6 +9,7 @@
 #include <time.h>
 #include <string>
 #include "BluetoothSocket.h"
+#include "sounds.h"
 
 int main(){
     signal(SIGINT, exit_signal_handler); // register the exit function for ctrl+c
@@ -38,7 +39,7 @@ int main(){
 		while(mb.isRunning()) {
 			input = mb.readMessage();  //blokkeert niet
 			if(!input.empty()){
-                if(input == "Left"){
+                if(input == "LEFT"){
                     goleft(Gyro4);
                     brake();
                 }else if(input == "RIGHT"){
@@ -54,7 +55,7 @@ int main(){
                     brake();
 
                 }else if(input == "FIRE"){
-                    
+                    sirene_sound();
                 }else if(input == "A"){
 
                 }else if(input == "B"){
