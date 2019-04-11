@@ -36,15 +36,15 @@ int main(){
 		std::string input;
 		while(mb.isRunning()) {
 			input = mb.readMessage();  //blokkeert niet
-			if(input){
+			if(input.empty()){
                 if(input == "Left"){
-                    goleft();
+                    goleft(Gyro4);
                 }else if(input == "Right"){
-                    goright();
+                    goright(Gyro4);
                 }else if(input == "Up"){
                     goforward_man(250, Gyro4);
                 }else if(input == "Down"){
-                    turnaround();
+                    turnaround(Gyro4);
                 }else if(input == "Fire"){
                     
                 }else if(input == "A"){
