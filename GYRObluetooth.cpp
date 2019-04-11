@@ -37,7 +37,7 @@ int main(){
 		std::string input;
 		while(mb.isRunning()) {
 			input = mb.readMessage();  //blokkeert niet
-			if(input.empty()){
+			if(!input.empty()){
                 if(input == "Left"){
                     goleft(Gyro4);
                 }else if(input == "Right"){
