@@ -85,8 +85,7 @@ void object(sensor_gyro_t & Gyro4, sensor_ultrasonic_t & Ultrasonic3, const int3
 		int controlValue = PIDcontrol(Gyro4);
 		EncoderC = BP.get_motor_encoder(PORT_C);
 		EncoderB = BP.get_motor_encoder(PORT_B);
- 		BP.set_motor
-			_power(PORT_C, -controlValue + MOTORSPEED);
+ 		BP.set_motor_power(PORT_C, -controlValue + MOTORSPEED);
  		BP.set_motor_power(PORT_B, +controlValue + MOTORSPEED);
 		usleep(BASE_SLEEP);
 	}
