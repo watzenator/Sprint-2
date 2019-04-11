@@ -27,18 +27,18 @@ int main(){
 		exit(-5);
 	}
 
-	BP.set_sensor_type(PORT_1, SENSOR_TYPE_EV3_GYRO_ABS);
-	BP.set_sensor_type(PORT_2, SENSOR_TYPE_NXT_ULTRASONIC);
+	BP.set_sensor_type(PORT_3, SENSOR_TYPE_NXT_ULTRASONIC);
+	BP.set_sensor_type(PORT_4, SENSOR_TYPE_EV3_GYRO_ABS);
 
 	sensor_ultrasonic_t Ultrasonic3;
-	sensor_gyro_t gyro4;
+	sensor_gyro_t Gyro4;
 
 	int8_t speedleft = MOTORSPEED;
 	int8_t speedright = MOTORSPEED;
 
 // 	forward_sound();
 
-	while(BP.get_sensor(PORT_1, &gyro4)){}
+	while(BP.get_sensor(PORT_4, &Gyro4)){}
 	bool firstrun = true;
 	location startlocation;
 	location endlocation;
@@ -47,14 +47,14 @@ int main(){
 		startlocation = askLocation();
 		std::cout << "vul eindlocatie in\n";
 		endlocation = askLocation();
-		grid(startlocation, endlocation, gyro4, Ultrasonic3);
+		grid(startlocation, endlocation, Gyro4, Ultrasonic3);
 		startlocation = endlocation;
 		firstrun = false;
 	}
 	while(not firstrun){
 		std::cout << "vul eindlocatie in\n";
 		endlocation = askLocation();
-		grid(startlocation, endlocation, gyro4, Ultrasonic3);
+		grid(startlocation, endlocation, Gyro4, Ultrasonic3);
 		startlocation = endlocation;
 	}
 
