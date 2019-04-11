@@ -30,9 +30,4 @@
 *.exe
 *.out
 *.app
-.vscode/ipch/1aa06097d69579b5/mmap_address.bin
-.vscode/ipch/1aa06097d69579b5/PIDGRID.ipch
-.vscode/ipch/4c57bb3f8eca2fd1/mmap_address.bin
-.vscode/ipch/c0af84c98319a3f7/mmap_address.bin
-.vscode/ipch/4c57bb3f8eca2fd1/PIDGRID.ipch
-.vscode/ipch/c0af84c98319a3f7/GYROBLUETOOTH.ipch
+.vscode*
