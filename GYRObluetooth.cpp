@@ -8,6 +8,7 @@
 #include <iostream>
 #include <time.h>
 #include <string>
+#include "BluetoothSocket.h"
 
 int main(){
     signal(SIGINT, exit_signal_handler); // register the exit function for ctrl+c
