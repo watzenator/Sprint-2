@@ -41,7 +41,7 @@ int main(){
                 }else if(input == "Right"){
                     goright();
                 }else if(input == "Up"){
-                    //goforward();
+                    goforward_man(250, Gyro4);
                 }else if(input == "Down"){
                     turnaround();
                 }else if(input == "Fire"){
