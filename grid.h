@@ -78,8 +78,8 @@ void object(sensor_gyro_t & Gyro4, sensor_ultrasonic_t & Ultrasonic3, const int3
 
 	int32_t EncoderC = BP.get_motor_encoder(PORT_C);
 	int32_t EncoderB = BP.get_motor_encoder(PORT_B);
-	int32_t encoder1 = EncoderC + 250;
-	int32_t encoder2 = EncoderB + 250;
+	int32_t encoder1 = EncoderC + 500;
+	int32_t encoder2 = EncoderB + 500;
 
 	while(EncoderC <= encoder1 && EncoderB <= encoder2){
 		int controlValue = PIDcontrol(Gyro4);
@@ -90,7 +90,7 @@ void object(sensor_gyro_t & Gyro4, sensor_ultrasonic_t & Ultrasonic3, const int3
 		usleep(BASE_SLEEP);
 	}
 	goright(Gyro4);
-	count250s ++;
+	count250s += 500;
 
 	BP.set_motor_power(PORT_C, 0);
 	BP.set_motor_power(PORT_B, 0);
@@ -116,7 +116,6 @@ void object(sensor_gyro_t & Gyro4, sensor_ultrasonic_t & Ultrasonic3, const int3
 	
 	//
 	BP.get_sensor(PORT_3, &Ultrasonic3);
-	count250s = 0;
 	while(Ultrasonic3.cm < 10){
 		// gaat naar links
 		goleft(Gyro4);
