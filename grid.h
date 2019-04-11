@@ -227,7 +227,7 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4, sensor_ultra
 		differenceX *= -1;
 		negativeX = true;
 	}
-	goforward_auto(differenceX);
+	goforward_auto(differenceX, Gyro4, Ultrasonic3);
 	brake();
 	usleep(BASE_SLEEP);
 	if(negativeX == 1 && differenceY < 0){
