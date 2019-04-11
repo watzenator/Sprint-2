@@ -116,7 +116,7 @@ void object(sensor_gyro_t & Gyro4, sensor_ultrasonic_t & Ultrasonic3, const int3
 	
 	//
 	BP.get_sensor(PORT_3, &Ultrasonic3);
-	while(Ultrasonic3.cm < 10){
+	while(Ultrasonic3.cm < 15){
 		// gaat naar links
 		goleft(Gyro4);
 		BP.set_motor_power(PORT_C, 0);
