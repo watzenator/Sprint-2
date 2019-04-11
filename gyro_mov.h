@@ -228,8 +228,8 @@ void object(sensor_gyro_t & Gyro4, sensor_ultrasonic_t & Ultrasonic3, const int3
 
 void goforward_man(double distance, sensor_gyro_t & Gyro4){
 	int controlValue;
-	int32_t encoder1 = distance * 250 + BP.get_motor_encoder(PORT_C);
-	int32_t encoder2 = distance * 250 + BP.get_motor_encoder(PORT_B);
+	int32_t encoder1 = distance + BP.get_motor_encoder(PORT_C);
+	int32_t encoder2 = distance + BP.get_motor_encoder(PORT_B);
 
 	while(BP.get_motor_encoder(PORT_C) <= encoder1 && BP.get_motor_encoder(PORT_B) <= encoder2){
 		BP.get_sensor(PORT_4, &Gyro4);

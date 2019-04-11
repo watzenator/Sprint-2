@@ -47,7 +47,7 @@ int main(){
                     brake();
 
                 }else if(input == "UP"){
-                    goforward_man(1, Gyro4);
+                    goforward_man(250, Gyro4);
                     brake();
 
                 }else if(input == "DOWN"){
