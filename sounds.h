@@ -24,3 +24,13 @@ void right_sound(){
     return;
   }
 }
+
+void sirene_sound(){
+  if(fork() == 0){
+    //child
+    char* args[] = {(char*)"/usr/bin/aplay",(char*) "./SirenePi.wav",(char*)"-q", (char*) NULL};
+    execv(args[0], &args[0]);
+  }else{
+    return;
+  }
+}
