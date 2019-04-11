@@ -40,13 +40,13 @@ int main(){
 			if(!input.empty()){
                 if(input == "Left"){
                     goleft(Gyro4);
-                }else if(input == "Right"){
+                }else if(input == "RIGHT"){
                     goright(Gyro4);
-                }else if(input == "Up"){
+                }else if(input == "UP"){
                     goforward_man(250, Gyro4);
-                }else if(input == "Down"){
+                }else if(input == "DOWN"){
                     turnaround(Gyro4);
-                }else if(input == "Fire"){
+                }else if(input == "FIRE"){
                     
                 }else if(input == "A"){
 
