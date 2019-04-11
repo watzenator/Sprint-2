@@ -19,6 +19,7 @@
 
 int main(){
 	signal(SIGINT, exit_signal_handler); // register the exit function for ctrl+c
+	signal(SIGCHLD, SIG_IGN); //needed to prevent zombie processes?
  	BP.detect(); // make sure that the brickpi3 is communicating and that the firmware is compatible with the drivers.
 
 	if(!voltageIsSafe()){
