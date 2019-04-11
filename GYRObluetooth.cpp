@@ -28,6 +28,7 @@ int main(){
 	while(BP.get_sensor(PORT_4, &Gyro4)){}
     //bluetooth
     BluetoothServerSocket serversock(2, 1);  //2 is het channel-number
+    std::cout << "Listening\n";
 	while(true) {
 		BluetoothSocket* clientsock = serversock.accept();
 		std::cout << "accepted from " << clientsock->getForeignAddress().getAddress() << std::endl;
