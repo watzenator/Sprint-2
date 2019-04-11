@@ -6,7 +6,7 @@
 #define MAX_MOTORPOWER 100
 #define MIN_MOTORPOWER -100
 #define MOTORSPEED 50
-#define BASE_SLEEP 250
+#define BASE_SLEEP 400
 BrickPi3 BP;
 int baseline = 0;
 
