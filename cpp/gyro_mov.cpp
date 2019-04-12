@@ -1,17 +1,5 @@
-#ifndef _GYRO_MOV_H
-#define _GYRO_MOV_H
 
-// #include "BrickPi3.cpp"
-
-#include "base_values.h"
-#include "signalhandler.h"
-#include "pid.h"
-#include <unistd.h>     // for usleep
-#include <signal.h>     // for catching exit signals
-#include <iostream>
-#include <time.h>
-#include "sounds.h"
-//#include "object.h"
+#include "gyro_mov.hpp"
 
 
 void turn(sensor_gyro_t & Gyro4){
@@ -260,5 +248,3 @@ void goforward_auto(const int32_t & distance, sensor_gyro_t & Gyro4, sensor_ultr
 		usleep(BASE_SLEEP);
 	}
 }
-
-#endif

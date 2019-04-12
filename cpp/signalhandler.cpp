@@ -1,15 +1,4 @@
-#ifndef _SIGNALHANDLER_H
-#define _SIGNALHANDLER_H
-
-#include <signal.h>     // for catching exit signals
-#include <string>
-#include <iostream>
-#include "gyro_mov.h"
-#include "base_values.h"
-#include <cstdio>
-#include <iostream>
-
-
+#include "signalhandler.hpp"
 
 // Signal handler that will be called when Ctrl+C is pressed to stop the program
 void exit_signal_handler(int signo){
@@ -27,6 +16,3 @@ bool voltageIsSafe(){
 	}
 	return true;
 }
-
-
-#endif

@@ -1,10 +1,4 @@
-#pragma once
-
-#include <iostream>
-#include <string>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/wait.h>
+#include "sounds.hpp"
 
 
 void left_sound(){

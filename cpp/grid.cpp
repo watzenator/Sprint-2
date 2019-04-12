@@ -1,30 +1,17 @@
-#ifndef _GRID_H
-#define _GRID_H
 
-// #include "BrickPi3.cpp"
+#include "grid.hpp"
 
-#include "base_values.h"
-#include "pid.h"
-#include "gyro_mov.h"
-#include <iostream>
-#include <time.h>
+location location::operator+(const location & rhs){
+   this->x += rhs.x;
+   this->y += rhs.y;
+   return *this;
+}
 
-struct location{
-	int x = 0;
-	int y = 0;
-
-  location operator+(const location & rhs){
-    this->x += rhs.x;
-    this->y += rhs.y;
-    return *this;
-  }
-
-  location operator-(const location & rhs){
-    this->x -= rhs.x;
-    this->y -= rhs.y;
-    return *this;
-  }
-};
+location location::operator-(const location & rhs){
+   this->x -= rhs.x;
+   this->y -= rhs.y;
+   return *this;
+}
 
 location askLocation(){
 	location goLoc;
@@ -98,4 +85,3 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4, sensor_ultra
 	}
 	usleep(500);
 }
-#endif

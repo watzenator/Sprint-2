@@ -1,11 +1,4 @@
-#ifndef _PID_H
-#define _PID_H
-
-// #include "BrickPi3.cpp"
-
-#include <iostream>
-#include "base_values.h"
-#include <unistd.h>
+#include "pid.hpp"
 
 int calc_degrees(int abs){
 	abs %= 360;
@@ -27,5 +20,3 @@ int PIDcontrol(sensor_gyro_t & Gyro4){
 	if(turnspeed < 30 && turnspeed > 0) return 30;
 	return turnspeed;
 }
-
-#endif

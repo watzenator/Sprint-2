@@ -1,5 +1,4 @@
-#ifndef _BASE_VALUES_H
-#define _BASE_VALUES_H
+#pragma once
 
 #include "BrickPi3.cpp"
 
@@ -9,5 +8,3 @@
 #define BASE_SLEEP 1000
 BrickPi3 BP;
 int baseline = 0;
-
-#endif
