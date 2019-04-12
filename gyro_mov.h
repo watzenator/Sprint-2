@@ -25,14 +25,14 @@ void turn(sensor_gyro_t & Gyro4){
 	}
 }
 
-void goright(sensor_gyro_t & Gyro4){
-	right_sound();
+void goright(sensor_gyro_t & Gyro4, const bool & sound = false){
+	if(sound)right_sound();
 	baseline += 90;
 	turn(Gyro4);
 }
 
-void goleft(sensor_gyro_t & Gyro4){
-	left_sound();
+void goleft(sensor_gyro_t & Gyro4, const bool & sound = false){
+	if(sound)left_sound();
 	baseline -= 90;
 	turn(Gyro4);
 }

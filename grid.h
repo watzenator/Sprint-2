@@ -53,36 +53,36 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4, sensor_ultra
 	brake();
 	usleep(BASE_SLEEP);
 	if(negativeX == 1 && differenceY < 0){
-		goleft(Gyro4);
+		goleft(Gyro4, true);
 		brake();
 		usleep(BASE_SLEEP);
 		differenceY *= -1;
 		negativeY = true;
 	}
 	else if(negativeX == 1 && differenceY > 0){
-		goright(Gyro4);
+		goright(Gyro4), true;
 		brake();
 		usleep(BASE_SLEEP);
 	}
 	else if(negativeX == 1 && differenceY == 0){
-		goright(Gyro4);
+		goright(Gyro4, true);
 		brake();
 		usleep(BASE_SLEEP);
 	}
 	else if(negativeX == 0 && differenceY < 0){
-		goright(Gyro4);
+		goright(Gyro4, true);
 		brake();
 		usleep(BASE_SLEEP);
 		differenceY *= -1;
 		negativeY = true;
 	}
 	else if(negativeX == 0 && differenceY > 0){
-		goleft(Gyro4);
+		goleft(Gyro4, true);
 		brake();
 		usleep(BASE_SLEEP);
 	}
 	else{
-		goleft(Gyro4);
+		goleft(Gyro4, true);
 		brake();
 		usleep(BASE_SLEEP);
 	}
@@ -90,10 +90,10 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4, sensor_ultra
 	brake();
 	usleep(BASE_SLEEP);
 	if(negativeY == 1){
-		goleft(Gyro4);
+		goleft(Gyro4, true);
 		brake();
 	}else{
-		goright(Gyro4);
+		goright(Gyro4, true);
 		brake();
 	}
 	usleep(500);

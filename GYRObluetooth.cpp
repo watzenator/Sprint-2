@@ -40,10 +40,10 @@ int main(){
 			input = mb.readMessage();  //blokkeert niet
 			if(!input.empty()){
                 if(input == "LEFT"){
-                    goleft(Gyro4);
+                    goleft(Gyro4, true);
                     brake();
                 }else if(input == "RIGHT"){
-                    goright(Gyro4);
+                    goright(Gyro4, true);
                     brake();
 
                 }else if(input == "UP"){
