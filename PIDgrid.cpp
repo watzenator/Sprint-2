@@ -1,5 +1,5 @@
-#include "base_values.h" //BrickPi3.cpp is included here
-// #include "BrickPi3.h"
+#include "base_values.hpp" //BrickPi3.cpp is included here
+#include "BrickPi3.h"
 #include "signalhandler.h"
 #include "pid.h"
 #include "gyro_mov.h"
