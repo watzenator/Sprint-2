@@ -1,6 +1,7 @@
 #pragma once
 
 #include "base_values.hpp"
+#include "Brickpi3.h"
 #include "pid.hpp"
 #include "gyro_mov.hpp"
 #include <iostream>

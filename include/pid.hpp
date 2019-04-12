@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include "base_values.hpp"
+#include "BrickPi3.h"
 #include <unistd.h>
 
 int calc_degrees(int abs);

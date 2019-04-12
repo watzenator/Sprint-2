@@ -1,6 +1,7 @@
 #pragma once
 
 #include "base_values.hpp"
+#include "BrickPi3.h"
 #include "signalhandler.hpp"
 #include "pid.hpp"
 #include <unistd.h>     // for usleep
