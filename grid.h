@@ -59,12 +59,7 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4, sensor_ultra
 		differenceY *= -1;
 		negativeY = true;
 	}
-	else if(negativeX == 1 && differenceY > 0){
-		goright(Gyro4);
-		brake();
-		usleep(BASE_SLEEP);
-	}
-	else if(negativeX == 1 && differenceY == 0){
+	else if(negativeX == 1 && differenceY >= 0){
 		goright(Gyro4);
 		brake();
 		usleep(BASE_SLEEP);
@@ -76,12 +71,7 @@ void grid(location startLoc, location endLoc,sensor_gyro_t & Gyro4, sensor_ultra
 		differenceY *= -1;
 		negativeY = true;
 	}
-	else if(negativeX == 0 && differenceY > 0){
-		goleft(Gyro4);
-		brake();
-		usleep(BASE_SLEEP);
-	}
-	else{
+	else if(negativeX == 0 && differenceY >= 0){
 		goleft(Gyro4);
 		brake();
 		usleep(BASE_SLEEP);
